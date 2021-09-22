@@ -1,0 +1,74 @@
+<!-- Password strength score -->
+<div class="centered">
+  <h2 class="spacing-tight">Password Strength: {{ result }}</h2>
+  <h3 class="spacing-tight">{{ comments }}</h3>
+</div>
+<!-- Hacking time approximations for different hacker speeds -->
+<div class="card-group">
+  <!-- Speed 1: Snail -->
+  <!-- Representing protection from throttled online attacks -->
+  <div class="icon-card">
+    <h3 class="card-title">Hacker Speed 1</h3>
+    <img
+      class="card-img"
+      src="{{url_for('static', filename='snail.png')}}"
+      alt="snail"
+    />
+    <div class="tooltip">
+      {{ speed_1 }}
+      <span class="tooltiptext"
+        >The approximate speed of throttled online attacks</span
+      >
+    </div>
+  </div>
+  <!-- Speed 2: Tortoise -->
+  <!-- Representing protection from unthrottled online attacks -->
+  <div class="icon-card">
+    <h3 class="card-title">Hacker Speed 2</h3>
+    <img
+      class="card-img"
+      src="{{url_for('static', filename='tortoise.png')}}"
+      alt="tortoise"
+    />
+    <div class="tooltip">
+      {{ speed_2 }}
+      <span class="tooltiptext"
+        >The approximate speed of unthrottled online attacks</span
+      >
+    </div>
+  </div>
+  <!-- Speed 3: Hare -->
+  <!-- Representing protection from offline attacks - assuming a salted, slow hash function -->
+  <div class="icon-card">
+    <h3 class="card-title">Hacker Speed 3</h3>
+    <img
+      class="card-img"
+      src="{{url_for('static', filename='hare.png')}}"
+      alt="hare"
+    />
+    <div class="tooltip">
+      {{ speed_3 }}
+      <span class="tooltiptext"
+        >The approximate speed of offline attacks - assuming a slow hash
+        function</span
+      >
+    </div>
+  </div>
+  <!-- Speed 4: Cheetah -->
+  <!-- Representing protection from offline attacks - assuming a fast hash function -->
+  <div class="icon-card">
+    <h3 class="card-title">Hacker Speed 4</h3>
+    <img
+      class="card-img"
+      src="{{url_for('static', filename='cheetah.png')}}"
+      alt="cheetah"
+    />
+    <div class="tooltip">
+      {{ speed_4 }}
+      <span class="tooltiptext"
+        >The approximate speed of offline attacks - assuming a fast hash
+        function</span
+      >
+    </div>
+  </div>
+</div>

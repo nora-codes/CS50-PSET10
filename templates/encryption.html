@@ -1,0 +1,120 @@
+{% extends "layout.html" %} {% block title %} Encryption {% endblock %} {% block
+main %}
+<!-- Password strength analysis from zxcvbn' algorithm: https://github.com/dropbox/zxcvbn -->
+
+<!-- Section 1: User encryption Keys -->
+<div class="table">
+  <!-- Title -->
+  <h2 class="spacing-tight">Your encryption keys</h2>
+  <h4 class="spacing-tight">Remember these!</h4>
+  <hr />
+  <!-- Table displaying user's encryption keys -->
+  <table>
+    <!-- Iterate over rows in table and get data for keys -->
+    {% for row in log %}
+    <!-- If method is 'capitalise' - characters are not shown -->
+    {% if row.method == "Capitalise" %}
+    <tr>
+      <td>{{ row.id }}. {{ row.method }} {{ row.location }} the password</td>
+    </tr>
+    {% else %}
+    <tr>
+      <td>
+        {{ row.id }}. {{ row.method }} "{{ row.characters }}" {{ row.location }}
+        the password
+      </td>
+    </tr>
+    {% endif %} {% endfor %}
+  </table>
+</div>
+
+<!-- Section 2: Test password - select site -->
+<div class="box">
+  <!-- Title -->
+  <h2 class="spacing-tight">Test your password</h2>
+  <h4 class="spacing-tight">
+    See how your encryptions effect the site's password
+  </h4>
+  <!-- Dropdown to select site -->
+  <form id="site_form" action="/encryption" method="post">
+    {% include "site.html" %}
+  </form>
+</div>
+
+<!-- Section 3a: Password results - website & password -->
+<div class="banner" id="banner-title">
+  <!-- Website -->
+  <h2 class="spacing-tight">
+    <span class="thin">Website: </span>www.{{ site }}.com
+  </h2>
+  <!-- Password -->
+  <h1 class="spacing-tight">
+    <span class="thin">Password: </span>{{ password }}
+  </h1>
+</div>
+
+<!-- Section 3b: Password results - speed approximations -->
+<!-- If there are warnings and/or suggestions - display center banner -->
+<!-- If there are no warnings and/or suggestions - display bottom banner -->
+{% if not ((warnings == 0) and (suggestions == 0)) %}
+<div class="banner" id="banner-middle">{% include "strength.html" %}</div>
+{% else %}
+<div class="banner" id="banner-bottom" style="background-color: white">
+  {% include "strength.html" %}
+</div>
+{% endif %}
+
+<!-- Section 3c: Password results - warnings and suggestions -->
+
+<!-- If there are warnings and/or suggestions - display banner -->
+<!-- Warnings -->
+<!-- Suggestions -->
+{% if not ((warnings == 0) and (suggestions == 0)) %}
+<div class="banner" id="banner-bottom">
+  <div class="centered">
+    {% if not (warnings == 0) %}
+    <h4>{{ warnings }}</h4>
+    {% endif %} {% if not (suggestions == 0) %}
+    <h4>{{ suggestions }}</h4>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Section 4: Modify the encryption -->
+<!-- Button - add another encryption -->
+<button type="button" onclick="myfunction_another()">
+  Add another encryption method
+</button>
+<!-- Script for button popout -->
+<script>
+  function myfunction_another() {
+    // Get encryption block
+    var x = document.getElementById("add_encryption");
+    // Toggle button to show the custom location block
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+<!-- User input form -->
+<form
+  id="add_encryption"
+  action="/encryption"
+  method="post"
+  style="display: none"
+>
+  {% include "form.html" %}
+  <!-- Button - submit Form -->
+  <button type="submit" name="submit_button" value="encryption">
+    Test password
+  </button>
+</form>
+<!-- Button - start again -->
+<form action="/getting_started">
+  <button type="submit" name="submit_button">Start over</button>
+</form>
+
+{% endblock %}

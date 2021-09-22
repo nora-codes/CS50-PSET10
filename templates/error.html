@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block title %} Apology {% endblock %} {% block
+main %}
+
+<div class="centered">
+  <!-- Error report -->
+  {% if (root == "getting_started") %}
+  <form action="/getting_started" method="post">
+    <!-- Title -->
+    <h1>Oops!</h1>
+    <!-- Error description -->
+    <h3>{{ apology }}</h3>
+    <!-- Button - return to 'getting_started' page -->
+    <div class="form-group">
+      <button type="submit" name="submit_button">Back to encryption</button>
+    </div>
+  </form>
+  {% else %}
+  <form action="/encryption" method="post">
+    <!-- Title -->
+    <h1>Oops!</h1>
+    <!-- Error description -->
+    <h3>{{ apology }}</h3>
+    <!-- Button - return to 'encryption' page -->
+    <div class="form-group">
+      <button type="submit" name="submit_button">Back to encryption</button>
+    </div>
+  </form>
+  {% endif %}
+</div>
+
+{% endblock %}

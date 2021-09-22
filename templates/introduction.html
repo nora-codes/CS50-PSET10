@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block title %} Introduction {% endblock %} {% block main %}
+
+  <!-- Intro -->
+  <div class="box">
+    <h2 class="spacing-tight">Want to store different passwords for everything</h2>
+    <h1 class="spacing-tight">all inside your own brain?</h1>
+    <h3 class="spacing-tight">No problemo friend! Here's how...</h3>
+  </div>
+  <!-- Step 1 -->
+  <div class="banner" id="banner-top">
+    <h3>Step 1: THE BASE<h3>
+    <h4>Start with a base word for your password. Now, we want this word to be different for each site you use, so let's use the website name as the base - easy!</h4>
+    <h3>Example password base: <b>google</b></h3>   
+  </div>
+  <!-- Step 2 -->
+  <div class="banner" id="banner-middle">
+    <h3>Step 2: THE ENCRYPTION<h3>
+    <h4>Now this part might sound intimidating, but it doesn't need to be! Start with something easy - like adding an exclamation mark at the end of the password perhaps?</h4>
+    <h3>Example password encryption: <b>google!</b></h3>     
+  </div>
+  <!-- Step 3 -->
+  <div class="banner" id="banner-bottom">
+    <h3>Step 3: THE KEY<h3>
+    <h4>Now you have your base and encryption, you've done it! You have a password that is unique to every website. All you have to do is remember your encryption key so you can apply it to every site.</h4>
+    <h3>Example password key: <b><i>Add an exclamation mark at the end of the password </i></b></h3>
+  </div>
+  <!-- Summary -->
+  <div class="box">
+    <p class="spacing-tight"><b>Sounds simple enough right? Only catch is that this example is a bit too easy to guess, so you need to add a few more encryptions to make the password more secure. Want to give it a try for yourself?</b><p>
+  </div>
+  <!-- Button - next page -->
+  <form action="/getting_started">
+      <button
+        type="submit"
+      >
+        Let's get started!
+      </button>
+    </form>
+ 
+{% endblock %}
+       

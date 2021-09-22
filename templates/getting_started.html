@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block title %} Getting_Started {% endblock %}
+{%block main%}
+
+<div class="centered">
+  <!-- Instruction -->
+  <h2>Specify your first encryption type:</h2>
+  <!-- User input form -->
+  <form action="/encryption" method="post">
+    {% include "form.html" %}
+    <!-- Button - submit form -->
+    <button type="submit" name="submit_button" value="getting_started">
+      Test password
+    </button>
+  </form>
+</div>
+
+{% endblock %}

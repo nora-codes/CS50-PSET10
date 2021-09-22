@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <!-- Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet"
+      />
+      <!-- Stylesheet -->
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+      />
+      <!-- Favicon from https://favicon.io/emoji-favicons/locked-with-key -->
+      <link href="/static/favicon.ico" rel="icon" />
+      <title>manucript</title>
+    </head>
+    <body>
+      <main class="main">
+      <!-- Header -->
+      <div class="header">
+        <a href="/">
+          <div class="header">
+            <h1 class="spacing-tight">Manucrypt!</h1>
+            <h3 class="spacing-tight">Manual Encryption</h3>
+          </div>
+        </a>
+      </div>
+      <!-- Main Body -->
+      <main class="content" id="content">{% block main %}{% endblock %}</main>
+      <!-- Footer -->
+      <div class="footer">
+        <p>Footer to do</p>
+      </div>
+      </div>
+    </body>
+  </html>
+</html>
