@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <!-- Required meta tags -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <!-- Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500&family=Roboto+Slab:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+      <!-- Stylesheet -->
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+      />
+      <!-- Favicon from https://favicon.io/emoji-favicons/locked-with-key -->
+      <link href="/static/favicon_lock.ico" rel="icon" />
+       <!-- Title-->
+      <title>manucript</title>
+    </head>
+    <body>
+      <main class="main">
+      <!-- Header -->
+      <div class="header">
+        <a href="/">
+          <div class="header">
+            <h1 class="text" id="header">manucrypt</h1>
+            <h3 class="text">Manual Encryption</h3>
+          </div>
+        </a>
+      </div>
+      <!-- Main Body / Content -->
+      <main class="content" id="content">{% block main %}{% endblock %}</main>
+      <!-- Footer -->
+      <div class="footer">
+        <p>by lucy nora ahmed</p>
+      </div>
+      </div>
+    </body>
+  </html>
+</html>

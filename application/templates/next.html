@@ -1,0 +1,153 @@
+<!-- Next steps for the password -->
+
+<div class="box" id="next">
+  <!-- What next dropdown options -->
+  <select
+    class="select-css"
+    name="next_dropdown"
+    id="next_dropdown"
+    onchange="myFunction_options(this.value);"
+  >
+    <!-- If a change has been made to the password - reset dropdown -->
+    {% if mod == 1 %}
+    <option selected disabled value="Select">what next?</option>
+    {% endif %}
+    <option value="Site">test key on a different website</option>
+    <option value="Add">add an encryption</option>
+    <option value="Remove">remove an encryption</option>
+    <option value="Reqs">view password requirements</option>
+    <option value="Keys">view your encryption key</option>
+  </select>
+
+  <!-- Script for what next dropdown -->
+  <script>
+    // If the website name has been changed - show the site form
+    window.addEventListener("load", function () {
+      // Get next dropdown
+      var x = document.getElementById("next_dropdown");
+      // Get selected option from dropdown
+      var y = x.value;
+      // Get site form
+      var site = document.getElementById("site_form");
+      // If 'site' is selected in dropdown - show the site form
+      if (y === "Site") {
+        site.style.display = "block";
+      } else {
+        site.style.display = "none";
+      }
+    });
+
+    // Otherwise hide all options unless selected in the dropdown
+    function myFunction_options() {
+      // Get next dropdown
+      var x = document.getElementById("next_dropdown");
+      // Get selected option from dropdown
+      var y = x.value;
+      // Get various hidden content
+      var site = document.getElementById("site_form");
+      var add = document.getElementById("add_encryption");
+      var remove = document.getElementById("remove_encryption");
+      var reqs = document.getElementById("requirements");
+      var keys = document.getElementById("encryption_keys");
+      // Show content for selected option
+      if (y === "Site") {
+        site.style.display = "block";
+      } else {
+        site.style.display = "none";
+      }
+      if (y === "Add") {
+        add.style.display = "block";
+      } else {
+        add.style.display = "none";
+      }
+      if (y === "Remove") {
+        remove.style.display = "block";
+      } else {
+        remove.style.display = "none";
+      }
+      if (y === "Reqs") {
+        reqs.style.display = "block";
+      } else {
+        reqs.style.display = "none";
+      }
+      if (y === "Keys") {
+        keys.style.display = "block";
+      } else {
+        keys.style.display = "none";
+      }
+    }
+  </script>
+
+  <!-- Option 1: Test key on a different website -->
+  <form
+    id="site_form"
+    class="emphasis"
+    action="/results"
+    method="post"
+    style="display: none"
+  >
+    {% include "website.html" %}
+  </form>
+
+  <!-- Option 2: Add an encryption -->
+  <div
+    class="emphasis"
+    class="form_group"
+    name="add_encryption"
+    id="add_encryption"
+    style="display: none"
+  >
+    <form action="/results" method="post">
+      <!-- Add encryption form -->
+      {% include "encryption.html" %}
+      <!-- Button - submit Form -->
+      <button
+        type="submit"
+        name="submit_button"
+        id="encryption"
+        value="encryption"
+      >
+        Test password
+      </button>
+    </form>
+  </div>
+
+  <!-- Option 3: Remove an encryption -->
+  <form
+    class="emphasis"
+    id="remove_encryption"
+    action="/results"
+    method="post"
+    style="display: none"
+  >
+    <!-- Dropdown to select encryption -->
+    <div class="form_group">
+      <select class="select-css" name="remove_select" id="remove_select">
+        <option selected disabled value="select">choose encryption</option>
+        <!-- Iterate over rows in table and get data to show existing encryption methods -->
+        {% for row in encryption_key %}
+        <!-- If method is 'capitalise' - characters are not shown -->
+        {% if row.method == "Capitalise" %}
+        <option value="{{ row.id }}">
+          {{ row.id }}. {{ row.method }} {{ row.location }} the password.
+        </option>
+        {% else %}
+        <option value="{{ row.id }}">
+          {{ row.id }}. {{ row.method }} "{{ row.characters }}" {{row.location}}
+          the password.
+        </option>
+        {% endif %} {% endfor %}
+      </select>
+      <!-- Button - submit Form -->
+      <button type="submit" name="submit_button" id="encryption" value="remove">
+        Remove
+      </button>
+    </div>
+  </form>
+
+  <!-- Option 4: View standard password requirements -->
+  <!-- Code is listed in results.html & requirements.html for visual reasons -->
+
+  <!-- Option 5: View your encryption key -->
+  <!-- Code is listed in results.html & key.html for visual reasons -->
+</div>

@@ -1,0 +1,39 @@
+<!-- Strength results - hacker speed & password score -->
+<!-- Banner displays a different colour depending on score -->
+
+{% if (score == "0/4") %}
+<div class="box" id="strength" style="background-color: #ffb5a7">
+  {% include "score_data.html" %}
+</div>
+
+{% elif (score == "1/4") %}
+<div class="box" id="strength" style="background-color: #fec89a">
+  {% include "score_data.html" %}
+</div>
+
+{% elif (score == "2/4") %}
+<div class="box" id="strength" style="background-color: #fff3b0">
+  {% include "score_data.html" %}
+</div>
+
+{% elif (score == "3/4") %}
+<div class="box" id="strength" style="background-color: #e2ebb2">
+  {% include "score_data.html" %}
+</div>
+
+{% else %}
+<div class="blink" id="strength">
+  <div class="column">
+    <img
+      src="/static/favicon_party.ico"
+      style="transform: scaleX(-1)"
+      alt="party popper"
+    />
+  </div>
+  <div class="column-centre">{% include "score_data.html" %}</div>
+  <div class="column">
+    <img src="/static/favicon_party.ico" alt="party popper" />
+  </div>
+</div>
+
+{% endif %}

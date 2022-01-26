@@ -1,0 +1,122 @@
+{% extends "layout.html" %} {% block title %} Introduction {% endblock %} {%
+block main %}
+
+<div class="box">
+  <!-- Intro -->
+  <div class="box_inner" id="intro">
+    <h2 class="text" id="intro">
+      Want to store different passwords for everything? All inside your own
+      brain?
+    </h2>
+    <h3 id="intro">No problemo friend!</h3>
+  </div>
+  <!-- Explanation -->
+  <div class="box_inner" id="explanation">
+    <!-- Button 1: What's encryption? -->
+    <button class="collapsible">But, do I really have to?</button>
+    <div class="collapsible_text">
+      <p>Yes, you really do.</p>
+      <p>
+        As you know, our online accounts contain information that we don't want
+        random people on the internet to get hold of. Automated machines now
+        exist in the world that are built to gain unauthorised access to our
+        online stuff. It's sad and it's true.
+      </p>
+      <p>
+        An evil machine like this will keep trying out different passwords on an
+        account until it guesses correctly. Terrifyingly, these machines can try
+        thousands of character combinations per second. Yes, thousands! Per
+        second!
+      </p>
+      <p>
+        Once these machines have cracked one of our passwords, they can get into
+        all of our other accounts with the same password. And that is why we
+        really, really, really need to have different passwords for every single
+        one of our accounts.
+      </p>
+      <p>
+        The more complex our passwords are, the more security they are going
+        provide for our online stuff. We like security, security is great. So
+        let's make our passwords more complex! We can use encyption :)
+      </p>
+    </div>
+    <!-- Button 1: What's encryption? -->
+    <button class="collapsible">So, what's encryption?</button>
+    <div class="collapsible_text">
+      <p>
+        Encryption is a process to convert text into secret code. The only way
+        to read that secret code is with the key!
+      </p>
+      <p>An example of an encryption key could be:</p>
+      <p style="text-align: center; font-style: italic">
+        'replace each letter of the text with the next letter in the alphabet'
+      </p>
+      <p>
+        With this key, 'A' would become 'B', 'B' would become 'C' and so on. The
+        secret code for the text 'HELLO' would be 'IFMMP'.
+      </p>
+      <p>
+        Anyone with the key would be able to decifer any secret code that has
+        been encrypted using that key.
+      </p>
+      <p>Make sense? If not, have a quick google!</p>
+    </div>
+    <!-- Button 2: How does it work? -->
+    <button class="collapsible">What does this website do?</button>
+    <div class="collapsible_text">
+      <p>
+        So here on this site, we are going to use encryption to create passwords
+        for all of your accounts! Sounds intimidating, but I've made it easy for
+        you buddy.
+      </p>
+      <p>
+        The best part is... you only have to create one key that will encrypt
+        all of your passwords. One key (you might say) to rule them all.
+      </p>
+      <p>
+        The text that we will encrypt to make your password - is the name of the
+        site that you are creating an account for.
+      </p>
+      <p>For example, lets say your secret key is:</p>
+      <p style="text-align: center; font-style: italic">
+        add a '#' to the end of the text
+      </p>
+      <p>
+        Your password for facebook would be 'facebook#' or your password for
+        instagram would be 'instagram#' and so on...
+      </p>
+      <p>
+        Now, that example key is just a little bit too easy to guess, so you'll
+        want to make yours more elaborate.
+      </p>
+      <p>
+        Once you are happy with the security of your key, as long as you have it
+        memorised, you can remember all of your passwords!
+      </p>
+      <p>Doesn't that sound wonderful? Come on pal, you got this!</p>
+    </div>
+    <!-- Button 3: Get started -->
+    <form action="/getting_started">
+      <button type="submit" id="lets_go">Got it, let's go!</button>
+    </form>
+  </div>
+</div>
+
+<!-- Collapsible script from https://www.w3schools.com/howto/howto_js_accordion.asp -->
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var collapsible_text = this.nextElementSibling;
+      if (collapsible_text.style.maxHeight) {
+        collapsible_text.style.maxHeight = null;
+      } else {
+        collapsible_text.style.maxHeight = collapsible_text.scrollHeight + "px";
+      }
+    });
+  }
+</script>
+
+{% endblock %}

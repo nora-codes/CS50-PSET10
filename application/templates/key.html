@@ -1,0 +1,25 @@
+<!-- User encryption key -->
+
+<div class="table" id="encryption_keys" style="display: none">
+  <!-- Title -->
+  <h2 class="text">Your encryption key</h2>
+  <hr />
+  <!-- Table displaying user's exisitng encryption methods -->
+  <table>
+    <!-- Iterate over rows in table and get data for method -->
+    {% for row in encryption_key %}
+    <!-- If method is 'capitalise' - characters are not shown -->
+    {% if row.method == "Capitalise" %}
+    <tr>
+      <td>{{ row.id }}. {{ row.method }} {{ row.location }} the password.</td>
+    </tr>
+    {% else %}
+    <tr>
+      <td>
+        {{ row.id }}. {{ row.method }} "{{ row.characters }}" {{ row.location }}
+        the password.
+      </td>
+    </tr>
+    {% endif %} {% endfor %}
+  </table>
+</div>

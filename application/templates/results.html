@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block title %} Encryption {% endblock %} {% block
+main %}
+
+<!-- Password strength analysis from zxcvbn' algorithm: https://github.com/dropbox/zxcvbn -->
+<div class="box" id="results">
+  <!-- Website name & password -->
+  {% include "password.html" %}
+  <!-- Hacker speed & password score -->
+  {% include "score.html" %}
+  <!-- Password comments -->
+  {% include "comments.html" %}
+  <!-- Next steps dropdown -->
+  {% include "next.html" %}
+  <!-- Standard Password Requirements -->
+  {% include "requirements.html" %}
+  <!-- Encryption key -->
+  {% include "key.html" %}
+  <!-- Start Over -->
+  {% include "restart.html" %}
+</div>
+
+{% endblock %}

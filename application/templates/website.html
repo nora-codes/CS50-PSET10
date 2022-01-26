@@ -1,0 +1,65 @@
+<!-- Dropdown options to select website -->
+
+<select
+  class="select-css"
+  name="site_dropdown"
+  id="site_dropdown"
+  onchange="myFunction_site(this.value);"
+>
+  <option selected disabled value="select">{{ website }}</option>
+  <option value="custom">test your own...</option>
+  <option value="youtube">youtube</option>
+  <option value="facebook">facebook</option>
+  <option value="twitter">twitter</option>
+  <option value="instagram">instagram</option>
+  <option value="linkedin">linkedin</option>
+  <option value="netflix">netflix</option>
+  <option value="amazon">amazon</option>
+  <option value="ebay">ebay</option>
+  <option value="paypal">paypal</option>
+</select>
+
+<!-- Custom site -->
+<div
+  class="form_group"
+  name="custom_site"
+  id="custom_site"
+  style="display: none"
+>
+  <!-- Custom user input from dropdown -->
+  <input
+    autocomplete="off"
+    autofocus
+    name="custom_site_input"
+    id="custom_site_input"
+    placeholder="type the site name..."
+    type="text"
+  />
+  <!-- Button - submit form -->
+  <button type="submit" name="submit_button" value="website">
+    Test password
+  </button>
+</div>
+
+<!-- Script for custom user input /-->
+<script>
+  function myFunction_site() {
+    // Get the form
+    var form = document.getElementById("site_form");
+    // Get the site dropdown
+    var x = document.getElementById("site_dropdown");
+    // Get selected option for site dropdown
+    var y = x.value;
+    // Get custom site block
+    var z = document.getElementById("custom_site");
+    // If 'custom site' is selected in the dropdown - show the custom site block
+    if (y === "custom") {
+      z.style.display = "flex";
+      document.getElementById("custom_site_input").focus();
+    } else {
+      z.style.display = "none";
+      // If any other site selection is made - automatically submit the form
+      form.submit();
+    }
+  }
+</script>

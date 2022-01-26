@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block title %} Apology {% endblock %} {% block
+main %}
+
+<!-- Error report -->
+<div class="box">
+  <!-- If the error comes from 'getting started' page -->
+  {% if (root == "getting_started") %}
+  <form action="/getting_started" id="error_form" method="post">
+    <!-- Title -->
+    <h1>Oops!</h1>
+    <!-- Error description -->
+    <h3>{{ apology }}</h3>
+    <!-- Button - return to 'getting_started' page -->
+    <div class="form_group">
+      <button type="submit" name="submit_button">Back to encryption</button>
+    </div>
+  </form>
+
+  <!-- If the error comes from adding or removing an encrytion on the 'encryption' page -->
+  {% elif (root == "encryption") or (root == "remove") %}
+  <form action="/results" id="error_form" method="post">
+    <!-- Title -->
+    <h1>Oops!</h1>
+    <!-- Error description -->
+    <h3>{{ apology }}</h3>
+    <!-- Button - return to 'encryption' page -->
+    <div class="form_group">
+      <button type="submit" name="submit_button" value="apology">
+        Back to encryption
+      </button>
+    </div>
+  </form>
+
+  <!-- If the error comes from choosing a website on the 'encryption' page -->
+  {% elif (root == "website") %}
+  <form action="/results" id="error_form" method="post">
+    <!-- Title -->
+    <h1>Oops!</h1>
+    <!-- Error description -->
+    <h3>{{ apology }}</h3>
+    <!-- Button - return to 'encryption' page -->
+    <div class="form_group">
+      <button type="submit" name="submit_button">Back to encryption</button>
+    </div>
+  </form>
+
+  {% endif %}
+</div>
+
+{% endblock %}

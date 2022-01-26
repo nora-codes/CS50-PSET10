@@ -1,0 +1,257 @@
+<!-- Dropdown to select encryption type -->
+<div class="form_group">
+  <select
+    class="select-css"
+    name="select_method"
+    id="select_method"
+    onchange="myFunction_type(this.value);"
+  >
+    <option selected disabled value="Select">choose your encryption</option>
+    <option value="Add">add characters</option>
+    <option value="Replace">replace characters</option>
+    <option value="Capitalise">capitalise characters</option>
+  </select>
+  <!-- Script for dropdown popout-->
+  <script>
+    function myFunction_type() {
+      // Get the encryption type dropdown
+      var x = document.getElementById("select_method");
+      // Get selected option for dropdown
+      var y = x.value;
+      // Define each option seperately
+      var add = document.getElementById("select_add");
+      var rep = document.getElementById("select_replace");
+      var cap = document.getElementById("select_capitalise");
+      // When an option is chosen - show the relevant block and focus on text box
+      if (y === "Add") {
+        add.style.display = "block";
+        document.getElementById("characters_add").focus();
+      } else {
+        add.style.display = "none";
+      }
+      if (y === "Replace") {
+        rep.style.display = "block";
+        document.getElementById("characters_replace").focus();
+      } else {
+        rep.style.display = "none";
+      }
+      if (y === "Capitalise") {
+        cap.style.display = "block";
+      } else {
+        cap.style.display = "none";
+      }
+      // Or display an alert if no option is selected
+      if (y === "Select") {
+        alert("Choose an encryption type to get started");
+      }
+    }
+  </script>
+
+  <!-- Option 1: Add -->
+  <div name="select_add" id="select_add" class="card" style="display: none">
+    <div class="form_group">
+      <!-- Add form: location dropdown -->
+      <select
+        class="select-css"
+        name="location_add"
+        id="location_add"
+        onchange="myFunction_add(this.value);"
+      >
+        <option selected disabled value="select">location</option>
+        <option value="at the beginning of">at the beginning</option>
+        <option value="at the end of">at the end</option>
+        <option value="between all characters in">
+          between all characters
+        </option>
+        <option value="specific location">specific location</option>
+      </select>
+      <!-- Add form: custom input from location dropdown -->
+      <div
+        name="location_add_custom"
+        id="location_add_custom"
+        style="display: none"
+      >
+        <input
+          id="add_custom_input"
+          name="add_custom_input"
+          autocomplete="off"
+          autofocus
+          placeholder="type the position..."
+          type="number"
+        />
+      </div>
+      <!-- Add form: script for custom input popout /-->
+      <script>
+        function myFunction_add() {
+          // Get location dropdown
+          var x = document.getElementById("location_add");
+          // Get selected option from location dropdown
+          var y = x.value;
+          // Get custom location block
+          var z = document.getElementById("location_add_custom");
+          // If 'specific location' is selected in location dropdown
+          // Show the custom location block and focus on text box
+          if (y === "specific location") {
+            z.style.display = "block";
+            document.getElementById("add_custom_input").focus();
+          } else {
+            z.style.display = "none";
+          }
+          // Or display an alert if no option is selected
+          if (y === "select") {
+            alert("Choose a location for your characters");
+          }
+        }
+      </script>
+      <!-- Add form: user input characters -->
+      <input
+        id="characters_add"
+        name="characters_add"
+        autocomplete="off"
+        autofocus
+        placeholder="type a character or word..."
+        type="text"
+      />
+    </div>
+  </div>
+
+  <!-- Option 2: Replace -->
+  <div
+    id="select_replace"
+    name="select_replace"
+    class="card"
+    style="display: none"
+  >
+    <div class="form_group">
+      <!-- Replace form: location dropdown -->
+      <select
+        class="select-css"
+        id="location_replace"
+        name="location_replace"
+        onchange="myFunction_rep(this.value);"
+      >
+        <option selected disabled value="select">character to replace</option>
+        <option value="with the first character of">first character</option>
+        <option value="with the last character of">last character</option>
+        <option value="with every other character in">
+          every other character
+        </option>
+        <option value="specific character">specific character</option>
+      </select>
+      <!-- Replace form: custom input from location dropdown -->
+      <div
+        name="location_replace_custom"
+        id="location_replace_custom"
+        style="display: none"
+      >
+        <input
+          id="replace_custom_input"
+          name="replace_custom_input"
+          autocomplete="off"
+          autofocus
+          placeholder="type the position..."
+          type="number"
+        />
+      </div>
+      <!-- Replace form: script for custom input popout /-->
+      <script>
+        function myFunction_rep() {
+          // Get location dropdown
+          var x = document.getElementById("location_replace");
+          // Get selected option from location dropdown
+          var y = x.value;
+          // Get custom location block
+          var z = document.getElementById("location_replace_custom");
+          // If 'specific character' is selected in location dropdown
+          // Show the custom location block
+          if (y === "specific character") {
+            z.style.display = "block";
+            document.getElementById("replace_custom_input").focus();
+          } else {
+            z.style.display = "none";
+          }
+          // Or display an alert if no option is selected
+          if (y === "select") {
+            alert("Choose characters to replace");
+          }
+        }
+      </script>
+      <!-- Replace form: user input characters -->
+      <input
+        id="characters_replace"
+        name="characters_replace"
+        autocomplete="off"
+        autofocus
+        placeholder="type a character or word..."
+        type="text"
+      />
+    </div>
+  </div>
+
+  <!-- Option 3: Capitalise -->
+  <div
+    name="select_capitalise"
+    id="select_capitalise"
+    class="card"
+    style="display: none"
+  >
+    <div class="form_group">
+      <!-- Capitalise form: location dropdown-->
+      <select
+        class="select-css"
+        name="location_capitalise"
+        id="location_capitalise"
+        onchange="myFunction_cap(this.value);"
+      >
+        <option selected disabled value="select">
+          character to capitalise
+        </option>
+        <option value="the first character of">first character</option>
+        <option value="the last character of">last character</option>
+        <option value="the first & last characters of">
+          first & last characters
+        </option>
+        <option value="every other character of">every other character</option>
+        <option value="specific character">specific character</option>
+      </select>
+      <!-- Capitalise form: custom input from location dropdown -->
+      <div
+        name="location_capitalise_custom"
+        id="location_capitalise_custom"
+        style="display: none"
+      >
+        <input
+          id="capitalise_custom_input"
+          name="capitalise_custom_input"
+          autocomplete="off"
+          autofocus
+          placeholder="type the position..."
+          type="number"
+        />
+      </div>
+      <!-- Capitalise form: script for custom input popout /-->
+      <script>
+        function myFunction_cap() {
+          // Get location dropdown
+          var x = document.getElementById("location_capitalise");
+          // Get selected option from location dropdown
+          var y = x.value;
+          // Get custom location block
+          var z = document.getElementById("location_capitalise_custom");
+          // If 'specific character' is selected in location dropdown
+          // Show the custom location block
+          if (y === "specific character") {
+            z.style.display = "block";
+            document.getElementById("capitalise_custom_input").focus();
+          } else {
+            z.style.display = "none";
+          }
+          // Or display an alert if no option is selected
+          if (y === "select") {
+            alert("Choose characters to capitalise");
+          }
+        }
+      </script>
+    </div>
+  </div>
+</div>

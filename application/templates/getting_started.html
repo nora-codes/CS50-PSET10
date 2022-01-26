@@ -1,0 +1,61 @@
+{% extends "layout.html" %} {% block title %} Getting_Started {% endblock %}
+{%block main%}
+
+<div class="box" id="start">
+
+  <!-- Instruction -->
+  <h2 class="text" id="start_1">Let's create a key and try it out on the word:</h2>
+  <h1 class="text" id="start_2">'example'</h1>
+
+  <!-- Encryption -->
+  <div class="box" id="first_encryption">
+    <h3 id="start_3">Specify the first encryption in your key:</h3>
+    <button id="top_tip" class="collapsible">&#128161; Top Tip &#128161;</button>
+      <div id="top_tip" class="collapsible_text">
+        <p>I recommend starting with one of these, some websites require them:</p>
+        <ul>
+          <li>
+            Capitalise at least one character
+          </li>
+          <li>
+            Include at least one number
+          </li>
+          <li>
+            Include at least one special character <br/> ( ! @ # ? )
+          </li>
+          <li>
+            Add enough extra characters to bring any password up to at least 8 characters in length
+          </li>
+        </ul>
+      </div>
+    </h3>
+    <!-- User input form -->
+    <form id="start_form" action="/results" method="post">
+      {% include "encryption.html" %}
+      <!-- Button - submit form -->
+      <button type="submit" id="getting_started" name="submit_button" value="getting_started">
+        Test password
+      </button>
+    </form>
+  </div>
+
+</div>
+
+<!-- Collapsible script from https://www.w3schools.com/howto/howto_js_accordion.asp -->
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var collapsible_text = this.nextElementSibling;
+      if (collapsible_text.style.maxHeight) {
+        collapsible_text.style.maxHeight = null;
+      } else {
+        collapsible_text.style.maxHeight = collapsible_text.scrollHeight + "px";
+      }
+    });
+  }
+</script>
+
+{% endblock %}

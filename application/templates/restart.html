@@ -1,0 +1,25 @@
+<!-- Start Over -->
+
+<div>
+  <!-- 'Start Over' Button -->
+  <form action="/getting_started" id="start_over" name="start_over">
+    <button type="button" id="start_over" onclick="myFunction_reset()">
+      Start Over
+    </button>
+  </form>
+
+  <!-- From https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_confirm3 -->
+  <p hidden id="trigger_reset"></p>
+
+  <!-- Script for 'Start Over' button -->
+  <script>
+    function myFunction_reset() {
+      var reset = document.getElementById("start_over");
+      let text = "Are you sure you want to start again?";
+      if (confirm(text) == true) {
+        reset.submit();
+      }
+      document.getElementById("trigger_reset").innerHTML = text;
+    }
+  </script>
+</div>

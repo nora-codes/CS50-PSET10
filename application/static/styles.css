@@ -1,0 +1,521 @@
+/* global properties ------------------------------------*/
+/* ------------------------------------------------------*/
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Slab", serif;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.header {
+  position: fixed;
+  flex: 0 1 auto;
+  top: 0;
+  background: url(header.png);
+  width: 100%;
+  height: 110px;
+  padding: 5px;
+  color: #dddddd;
+  text-align: center;
+}
+
+h1#header {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 40px;
+  color: #c2f8cb;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  background-color: #bbadff;
+  margin-top: 110px;
+  padding: 50px 0px 50px 0px;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+}
+
+.footer {
+  flex: 0 1 10px;
+  background: url(header.png);
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.box {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0px;
+  border-radius: 30px;
+}
+
+.box_inner {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0px;
+}
+
+.text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+li {
+  font-family: "Roboto Mono", monospace;
+  font-size: 10pt;
+}
+
+ul {
+  padding-left: 15px;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  font-size: 16px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  color: white;
+  line-height: 1.3;
+  padding: 0.6em 1em 0.5em 1em;
+  min-width: 220px;
+  width: 100%; /* useful when width is set to anything other than 100% */
+  box-sizing: border-box;
+  margin: 5px 0px 0px 0px;
+  border: none;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  background-color: #777;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006d77;
+}
+
+/* select and input tags */
+/* dropdown and form styling by Chris Coyier on CSS-Tricks
+ https://css-tricks.com/styling-a-select-like-its-2019/  */
+
+/* class applies to select element itself, not a wrapper element */
+.select-css,
+input[type="number"],
+input[type="text"] {
+  display: block;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.3;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  min-width: 220px;
+  width: 100%; /* useful when width is set to anything other than 100% */
+  box-sizing: border-box;
+  margin: 0px 0px 5px 0px;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  appearance: none;
+  background-color: #fff;
+}
+
+.select-css {
+  /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+    for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+  */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+  background-position: right 0.7em top 50%, 0 0;
+  /* icon size, then gradient */
+  background-size: 0.65em auto, 100%;
+}
+
+/* Hide arrow icon in IE browsers */
+.select-css::-ms-expand {
+  display: none;
+}
+/* Hover style */
+.select-css:hover {
+  border-color: #888;
+}
+/* Focus style */
+.select-css:focus {
+  border-color: #aaa;
+  /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+  box-shadow: 0 0 1px 3px #7f5cad;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+/* Set options to normal weight */
+.select-css option {
+  font-weight: normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css,
+:root:lang(ar) .select-css,
+:root:lang(iw) .select-css {
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled,
+.select-css[aria-disabled="true"] {
+  color: graytext;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+.select-css:disabled:hover,
+.select-css[aria-disabled="true"] {
+  border-color: #aaa;
+}
+
+/* introduction.html ------------------------------------*/
+/* ------------------------------------------------------*/
+
+/* intro text */
+
+div#intro.box_inner {
+  padding: 0px 20px 20px 20px;
+  max-width: 600px;
+}
+
+h2#intro {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  color: #312244;
+}
+
+h3#intro {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* collapsible buttons and forms */
+/* from https://www.w3schools.com/howto/howto_js_collapsible.asp  */
+
+div#explanation.box {
+  display: block;
+}
+
+button.collapsible,
+button#lets_go {
+  width: 270px;
+  margin: 0px;
+  text-align: center;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible_text {
+  margin: 10px auto 10px auto;
+  width: 90%;
+  padding: 0 18px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  text-align: left;
+}
+
+/* getting_started.html ---------------------------------*/
+/* ------------------------------------------------------*/
+
+div#start.box {
+  padding: 0px 5px 0px 5px;
+}
+
+h2#start_1.text {
+  font-family: "Roboto Mono", monospace;
+  font-size: 23px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #312244;
+}
+
+h1#start_2.text {
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #008080;
+}
+
+div#first_encryption.box {
+  flex: none;
+  background-color: #212529;
+  color: white;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #f8f9fa;
+  border-radius: 30px;
+  text-align: center;
+  width: 75%;
+  max-width: 600px;
+}
+
+h3#start_3 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button#top_tip.collapsible {
+  font-family: "Roboto Mono", monospace;
+  background-color: #212529;
+  width: 150px;
+  color: #c2f8cb;
+  box-shadow: none;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+div#top_tip.collapsible_text {
+  color: #212529;
+  margin: 0px;
+}
+
+button#getting_started:hover {
+  background-color: #c2f8cb;
+  color: black;
+}
+
+form#start_form {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* encryption.html --------------------------------------*/
+/* ------------------------------------------------------*/
+
+div#results.box {
+  display: block;
+  flex: none;
+  margin: auto;
+  background-color: #212529;
+  color: white;
+  padding: 0px 0px 20px 0px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #f8f9fa;
+  border-radius: 30px;
+  text-align: center;
+  width: 85%;
+  max-width: 600px;
+}
+
+/* website & password */
+
+div#password.box {
+  margin: 30px 20px 30px 20px;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* speed & score */
+
+div#strength.box {
+  border-radius: 0px;
+  width: 100%;
+  padding: 20px;
+  color: black;
+}
+
+.blink {
+  border-radius: 0px;
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+  color: black;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0px;
+  animation: blink;
+  animation-duration: 1s;
+  background: #f8f9fa;
+}
+
+/* https://webdevpuneet.com/css-animation-color-blinking/#gsc.tab=0 */
+@keyframes blink {
+  0% {
+    background: #f8f9fa;
+  }
+  25% {
+    background: #f5e48e;
+  }
+  50% {
+    background: #f8f9fa;
+  }
+  75% {
+    background: #f5e48e;
+  }
+  100% {
+    background: #f8f9fa;
+  }
+}
+
+.columns {
+  border-radius: 0px;
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+  color: black;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0px;
+}
+
+.column {
+  float: left;
+  margin: 20px;
+}
+
+h2#speed {
+  margin-bottom: 15px;
+}
+
+/* password comments */
+
+div#comments.box {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* what next */
+
+div#next.box {
+  display: block;
+  flex: none;
+  margin: auto;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+}
+
+.emphasis {
+  border-radius: 10px;
+  padding: 6px;
+  background: #c2f8cb;
+}
+
+select#next_dropdown.select-css {
+  margin-bottom: 20px;
+}
+
+/* test key on a different website */
+
+select#site_dropdown.select-css {
+  margin: 0px;
+}
+
+input#custom_site_input {
+  margin-top: 5px;
+}
+
+/* view standard password requirements */
+
+div#requirements.box {
+  color: #c2f8cb;
+  width: 90%;
+  margin: auto;
+}
+
+h3#req_title.text {
+  font-weight: bold;
+}
+
+ul#req_list {
+  text-align: left;
+  padding-left: 25px;
+}
+
+/* view encryption key */
+
+.table {
+  width: 85%;
+  background-color: #ced4da;
+  background-image: url("graph_paper.jpg");
+  background-repeat: repeat;
+  color: black;
+  padding: 10px 15px 15px 15px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 5px 5px #888888;
+  margin: 0px auto 0px auto;
+  word-break: break-word;
+}
+
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+/* start over */
+
+button#start_over {
+  background-color: #39274d;
+  margin-top: 40px;
+  font-weight: 400;
+  width: 92%;
+}
+
+button#start_over:hover {
+  background-color: #bbadff;
+  color: black;
+  font-weight: 400;
+}
+
+/* error.html -------------------------------------------*/
+/* ------------------------------------------------------*/
+
+form#error_form {
+  max-width: 300px;
+}
