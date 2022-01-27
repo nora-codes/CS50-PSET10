@@ -17,12 +17,12 @@ Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 
 Deployed on [Heroku](https://www.heroku.com)
 
-Password speed calculated using [Dropbox 'zxcvbn'](https://github.com/dwolfhub/zxcvbn-python)
+Password speed calculated using Dropbox ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python)
 alogrithm for Python
 
 Other references used in the writing of this app are included in the notes of the files
 
-## Project Details: TLDR
+## Project Details: TLDR Summary
 
 Details of all of the files in the app are included below, but if that's too long to
 read, here is a summary of what the app does:
@@ -105,18 +105,18 @@ specific to the error.
 Assigns the three .html pages to their respective app functions. Each function gets the
 required data for the page and renders the templates.
 
-**Introduction**
+**Introduction Page**
 - Route: "/"
 - Function: index()
 - Renders: introduction.html
 
-**Getting Started**
+**Getting Started Page**
 - Route: "/getting_started"
 - Function: getting_started()
 - Calls: user_session.py
 - Renders: getting_started.html
 
-**Result**
+**Results Page**
 - Route: "/results"
 - Function: result()
 - Calls: user_inputs.py
@@ -136,9 +136,9 @@ Displays a welcome page with information including:
 Followed by a button that sends the user to the
 [***getting_started.html***](/application/templates/getting_started) page.
 
-## Project Details: Getting Started
+## Project Details: Getting Started Page
 
-### [user session.py](/application/user session.py)
+### [user_session.py](/application/user_session.py)
 
 - ***Function: user_session()***
 - ***Return: None***
@@ -147,7 +147,8 @@ Before the [***getting_started.html***](/application/templates/getting_started.h
 the 'getting started' function is called and initiates a session for the encryption.
 The session will be used to store data for the user's current encryption key in the database.
 
-**'Users Table'**
+**Users Table**
+
 A table is created for the user to store the session information:
 - ID: A number between 1 and 20. The program will take the next available number.
 - session: A session name that is created and stored as a session variable
@@ -155,6 +156,7 @@ A table is created for the user to store the session information:
 the oldest row in the table to the current user if there are no empty rows to use.
 
 **Encryption Table**
+
 A table is created to store the user's encryption data from the current session:
 - ID: Uses a sequence that is created and stored as a session variable. The sequence
 starts at 1 and moves up in increments of 1. If a row is deleted in the table by the
@@ -191,7 +193,7 @@ key.
 When the user clicks the 'test password' button, [***user_inputs.py***](/application/user_inputs.py)
 is called and they are navigated to the [***results.html***](/application/templates/results.html) page.
 
-### [***encryption.html***](/application/templates/encryption.html)
+### [encryption.html](/application/templates/encryption.html)
 
 The user input form with the following options:
 
@@ -205,7 +207,7 @@ with.
 - Capitalise characters: Choose the location of the characters to capitalise, either from
 a dropdown list or manually entered by the user.
 
-### [***user_inputs.py***](/application/user_inputs.py)
+### [user_inputs.py](/application/user_inputs.py)
 
 - ***Function: user_input_data()***
 - ***Calls: encryption_log.py***
@@ -247,7 +249,7 @@ and an encyption key is created.
 
 Then the user's most recent encryption method is applied to the base word using [***password_encryption.py***](/application/password_encryption.py).
 
-### [***password_encryption.py***](/application/password_encryption.py)
+### [password_encryption.py](/application/password_encryption.py)
 
 - ***Function: encryption_add()***
 - ***Function: encryption_replace()***
@@ -265,7 +267,7 @@ the characters also specified by the user.
 
 - Capitalise Function: Takes the base word and capitalises the characters specified by the user.
 
-### [***encryption_log.py***](/application/encryption_log.py)
+### [encryption_log.py](/application/encryption_log.py)
 
 - ***Function: encryption_log()***
 - ***Returns: The encryption key (optional: false entry)***
@@ -287,9 +289,9 @@ Then, an encryption key is created to allow the user to remember all of their en
 methods. The raw data from the encryption table is not readable, so a readable version
 of the data is created as a list of sentences to be presented on the results page.
 
-## Project Details: Results
+## Project Details: Results Page
 
-### [***user_inputs.py***](/application/user_inputs.py)
+### [user_inputs.py](/application/user_inputs.py)
 
 - ***Function: user_input_data()***
 - ***Calls: encryption_log.py***
@@ -301,7 +303,8 @@ Called from result() function in [***manucrypt.py***](/application/manucrypt.py)
 all just data submitted by the user.
 
 See previous summary of [***user_inputs.py***](/application/user_inputs.py) in the
-'Project Details: Getting Started' section.
+'Project Details: Getting Started' section, which calls [***password_encryption.py***](/application/password_encryption.py)
+and [***encryption_log.py***](/application/encryption_log.py).
 
 ### [password_strength.py](/application/password_strength.py)
 
@@ -313,7 +316,7 @@ Called from the result() function in [***manucrypt.py***](/application/manucrypt
 password is sent through the ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python) program to
 get a strength analysis. Comments are then assigned to the password score.
 
-### [***results.html***](/application/templates/results.html)
+### [results.html](/application/templates/results.html)
 
 Once [***user_inputs.py***](/application/user_inputs.py) has collected the data from the user
 input form, the [***results.html***](/application/templates/results.html) page displays the
