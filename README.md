@@ -16,17 +16,16 @@ Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 ### References
 
 Deployed on Heroku:
-
 https://www.heroku.com
 
 Password speed calculated using zxcvbn for Python:
-
 https://github.com/dwolfhub/zxcvbn-python
 
-##### Project Details:
+#### Project Details:
 
-line 1
+Para 1
 
-line 2
+Para 2
 
-line 3
+Para 3
+
