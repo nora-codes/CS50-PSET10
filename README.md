@@ -43,7 +43,7 @@ the website for which the user is making a password.
 *The output of the password for facebook would be 'facebook#' or the password for*
 *instagram would be 'instagram#' and so on...*
 
-- The default website is 'www. example .com' and the corresponding base word for this
+- The default website is 'ww<span>w.</span>example.com' and the corresponding base word for this
 website is 'example. The user's encryption is first applied to this default and can be
 changed later.
 
@@ -61,7 +61,7 @@ lists their current encryption methods so they can memorise them.
 
 ## Project Details: Setup
 
-### [Procfile](Procfile.md)
+### [Procfile](/Procfile.md)
 
 Used to declare what command should be executed to start the app.
 
@@ -134,7 +134,7 @@ Displays a welcome page with information including:
 - An explantion of what encryption is
 - What the website does and how to use it
 
-Followed by a button that sends the user to the [***getting_started.html***](application/templates/getting_started.html.md) page
+Followed by a button that sends the user to the [***getting_started.html***](/application/templates/getting_started.html.md) page
 
 ## Project Details: Getting Started
 
