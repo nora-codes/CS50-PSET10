@@ -61,7 +61,7 @@ lists their current encryption methods so they can memorise them.
 
 ## Project Details: Setup
 
-### [Procfile](/Procfile.md)
+### [Procfile](/Procfile)
 
 Used to declare what command should be executed to start the app.
 
@@ -134,7 +134,7 @@ Displays a welcome page with information including:
 - An explantion of what encryption is
 - What the website does and how to use it
 
-Followed by a button that sends the user to the [***getting_started.html***](/application/templates/getting_started.html.md) page
+Followed by a button that sends the user to the [***getting_started.html***](/application/templates/getting_started.html) page
 
 ## Project Details: Getting Started
 
