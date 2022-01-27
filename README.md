@@ -30,17 +30,17 @@ read, here is a summary of what the app does:
 - A base word is used to start a password. The base word used on this app is the name of
 the website for which the user is making a password.
 
-*For example, if the website is facebook, the base word for the password will be*
-*facebook.*
+    *For example, if the website is facebook, the base word for the password will be*
+    *facebook.*
 
 - The user then creates a single encryption method to apply to the base word.
 
-*For example, if the encryption is:*
+    *For example, if the encryption is:*
 
-*'add a '#' to the end of the text'*
+    *'add a '#' to the end of the text'*
 
-*The output of the password for facebook would be 'facebook#' or the password for*
-*instagram would be 'instagram#' and so on...*
+    *The output of the password for facebook would be 'facebook#' or the password for*
+    *instagram would be 'instagram#' and so on...*
 
 - The default website is 'ww<span>w.</span>example.com' and the corresponding base word for this
 website is 'example. The user's encryption is first applied to this default and can be
