@@ -21,37 +21,65 @@ https://www.heroku.com
 Password speed calculated using Dropbox 'zxcvbn' alogrithm for Python:
 https://github.com/dwolfhub/zxcvbn-python
 
+Other references used in the writing of this app are included in the notes of the files
+
+## Project Details: TLDR
+
+Details of all of the files in the app are included below, but if that's too long to
+read, here is a summary of what the app does:
+
+- A base word is used to start a password. The base word used on this app is the name of
+the website for which the user is making a password.
+
+*For example, if the website is facebook, the base word for the password will be*
+*facebook.*
+
+- The user then creates a single encryption method to apply to the base word.
+
+*For example, if the encryption is:*
+
+*'add a '#' to the end of the text'*
+
+*The output of the password for facebook would be 'facebook#' or the password for*
+*instagram would be 'instagram#' and so on...*
+
+- The default website is 'www. example .com' and the corresponding base word for this
+website is 'example. The user's encryption is first applied to this default and can be
+changed later.
+
+- The app then analyses this password output and provides the user with a strength score
+and an approximate hacking speed.
+
+- The user can then add or remove single encryption methods to the overall encryption
+until they are happy with their password score and hacker speed.
+
+- The user can also test their encryption with other websites as this changes the password
+and concequently, the strength of the password.
+
+- Once the user is happy with their encryption, they can view an encryption key which
+lists their current encryption methods so they can memorise them.
+
 ## Project Details: Setup
 
-### Procfile
+### [Procfile](CS50_PSET10_Final_Project/Procfile)
 
 Used to declare what command should be executed to start the app.
-
-Ref: https://devcenter.heroku.com/articles/getting-started-with-python#define-a-procfile
 
 ### requirements.txt
 
 Used to list the required packages for the app.
 
-Ref: https://boscacci.medium.com/why-and-how-to-make-a-requirements-txt-f329c685181e
-
 ### run.py
 
 Used to point Flask to the app and setting it to run.
-
-Ref: Guidance from https://www.section.io/engineering-education/complete-guide-on-installing-flask-for-beginners/
 
 ### runtime.txt
 
 Used to specify which runtime to use on the app.
 
-Ref: https://devcenter.heroku.com/articles/python-runtimes
-
 ### __init__.py
 
 Used to specify that the directories containing the file should be treated as packages.
-
-Ref: https://newbedev.com/flask-importerror-no-module-named-app
 
 ### database.py
 
@@ -70,41 +98,6 @@ stylesheets, header and footer.
 
 Displays an error page when an error has been made by the user, showing an apology
 specific to the error.
-
-## Project Details: TLDR
-
-Details of all of the files in the app are included below, but if that's too long to
-read, here is a summary of what the app does:
-
-A base word is used to start a password. The base word used on this app is the name of
-the website for which the user is making a password.
-
-*For example, if the website is facebook, the base word for the password will be facebook.*
-
-The user then creates a single encryption method to apply to the base word.
-
-*For example, if the encryption is:*
-
-*'add a '#' to the end of the text'*
-
-*The output of the password for facebook would be 'facebook#' or the password for*
-*instagram would be 'instagram#' and so on...*
-
-The default website is 'www. example .com' and the corresponding base word for this
-website is 'example. The user's encryption is first applied to this default and can be
-changed later.
-
-The app then analyses this password output and provides the user with a strength score
-and an approximate hacking speed.
-
-The user can then add or remove single encryption methods to the overall encryption
-until they are happy with their password score and hacker speed.
-
-The user can also test their encryption with other websites as this changes the password
-and concequently, the strength of the password.
-
-Once the user is happy with their encryption, they can view an encryption key which lists
-their current encryption methods so they can memorise them.
 
 ## Project Details: Run
 
@@ -141,7 +134,9 @@ Displays a welcome page with information including:
 - An explantion of what encryption is
 - What the website does and how to use it
 
-Followed by a button that sends the user to the ***getting_started.html*** page
+Followed by a button that sends the user to the [***getting_started.html***](CS50_PSET10_Final_Project/application/templates/getting_started.html) page
+or [getting_started.html](CS50_PSET10_Final_Project/application/templates/getting_started.html) page
+
 
 ## Project Details: Getting Started
 
@@ -409,10 +404,3 @@ Displays the user's encryption key in simple text.
 
 Displays the 'start over' button and includes the script to trigger the warning pop-up
 box to confirm the reset with the user.
-
-
-
-
-
-
-
