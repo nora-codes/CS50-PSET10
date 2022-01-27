@@ -78,43 +78,45 @@ specific to the error.
 Assigns the three .html pages to their respective app functions. Each function gets the
 required data for the page and renders the templates.
 
-Introduction:
-- Route "/"
-- Function index()
-- Renders introduction.html
+**Introduction**
+- Route: "/"
+- Function: index()
+- Renders: introduction.html
 
-Getting Started:
-- Route "/getting_started"
-- Function getting_started()
-- Calls user_session.py
-- Renders getting_started.html
+**Getting Started**
+- Route: "/getting_started"
+- Function: getting_started()
+- Calls: user_session.py
+- Renders: getting_started.html
 
-Result:
-- Route "/results"
-- Function result()
-- Calls user_inputs.py
-- Calls password_strength.py
-- Renders error.html
-- Renders results.html
+**Result**
+- Route: "/results"
+- Function: result()
+- Calls: user_inputs.py
+- Calls: password_strength.py
+- Renders: error.html
+- Renders: results.html
 
-## Project Details: Introduction
+## Project Details: Introduction Page
 
 ### introduction.html
 
-Displays a welcome page with information (in collapsabble text boxes) including:
+Displays a welcome page with information including:
 - Why it's important to use different and complex passwords for each of your accounts
 - An explantion of what encryption is
 - What the website does and how to use it
 
 Followed by a button that sends the user to the 'getting started page'
 
+## Project Details: Getting Started
+
 ### user session.py
 
-- Function user_session()
-- No return values
+- **Function: user_session()**
+- **Return: None**
 
-Called from the 'getting started' page and initiates a session for the encryption.
-The session will be used to store data for the user's current encryption key in the
+Before the "getting_started.html is rendered, the 'getting started' function is called
+and initiates a session for the encryption. The session will be used to store data for the user's current encryption key in the
 database.
 
 A 'users table' is created for the user to store the session information:
@@ -142,22 +144,21 @@ If the user wants to start again with their encryption key and reset all the dat
 they will be routed back to the 'getting started' page, which will call this 'user
 session' function and a new session will be initiated
 
-## Project Details: Getting Started
-
 ### getting_started.html
 
 Displays a page for the user to enter the firest encryption method of their key.
 
-The encryption will first be tested on the base word 'example', which creates a
-password that would be used on www.example.com
+An explanation is shown that the encryption will first be tested on the base word
+'example', which creates a password that would be used on 'www.example.com'
 
 A collapsable 'top tip' is included to give the user ideas on what types of
 encryption would be useful on a real site
 
-The the user input form is displayed using encryption.html. This is where the user specifies an encryption
+The the user input form is displayed using **encryption.html**. This is where the user specifies an encryption
 method to include in their universal encryption key.
 
-When the user clicks the 'test password' button, they are navigated to the results page.
+When the user clicks the 'test password' button, **user_inputs.py** is called and they are
+navigated to the **results.html** page.
 
 ### encryption.html
 
@@ -175,16 +176,17 @@ a dropdown list or manually entered by the user.
 
 ### user_inputs.py
 
-- Function getting_started()
-- Calls encryption_log.py
-- Calls password encryption.py
-- Returns the encrypted password, the corresponding website and the encryption key
+- **Function: user_input_data()**
+- **Calls: encryption_log.py**
+- **Calls: password encryption.py**
+- **Returns: The encrypted password, the corresponding website and the encryption key**
 (optional: mod variable to check for modifications in the password)
 
 Called from the user input form, which can be submitted by the user from the 'getting
 started' or 'results' page.
 
-The user's most recent encryption specification is extracted from the user input form:
+The user's most recent encryption specification is extracted from the user input form
+and entered (along with other information) into variables:
 - method: Encryption method (add, replace or capitalise)
 - characters: Characters entered by the user for 'add' or 'replace' encryption methods.
 - location: The location of the encryption method in the password, selected from a
@@ -206,18 +208,42 @@ When the program is extracting this data from the user input form, it looks for 
 errors caused by the user and returns a custom apology note based on the error.
 
 The user's encryption table is accessed and all previously defined encryption methods
-are applied to the base word using password_encryption.py
+are applied to the base word using **password_encryption.py**.
 
 Then the user's most recent encryption method added to the user's encryption table using
-encryption_log.py and an encyption key is created.
+**encryption_log.py** and an encyption key is created.
 
 Then the user's most recent encryption method is applied to the base word using
-password_encryption.py.
+**password_encryption.py**.
+
+### password encryption.py
+
+- **Function: encryption_add()**
+- **Function: encryption_replace()**
+- **Function: encryption_capitalise()**
+- **Returns: The encrypted password**
+
+Called from **user_inputs.py**, the given encryption specification is applied to the base
+word.
+
+**Add Function**
+
+Takes the base word and adds the user's specified characters to the word in the location
+also specified by the user.
+
+**Replace Function**
+
+Takes the base word and replaces the characters specified by the user with the characters
+also specified by the user.
+
+**Capitalise Function**
+
+Takes the base word and capitalises the characters specified by the user.
 
 ### encryption_log.py
 
-- Function encryption_log()
-- Returns the encryption key (optional: false entry)
+- **Function: encryption_log()**
+- **Returns: The encryption key (optional: false entry)**
 
 Called from user_inputs.py, the encryption log is used to keep track of the user's
 encryptions within the current session.
@@ -236,50 +262,56 @@ Then, an encryption key is created to allow the user to remember all of their en
 methods. The raw data from the encryption table is not readable, so a readable version
 of the data is created as a list of sentences to be presented on the results page.
 
-### password encryption.py
-
-Called from user_inputs.py, the given encryption specification is applied to the base
-word.
-
-- Function encryption_add()
-- Returns the encrypted password
-
-Takes the base word and adds the user's specified characters to the word in the location
-also specified by the user.
-
-- Function encryption_replace()
-
-Takes the base word and replaces the characters specified by the user with the characters
-also specified by the user.
-
-- Function encryption_capitalise()
-
-Takes the base word and capitalises the characters specified by the user.
-
 ## Project Details: Results
+
+### user_inputs.py
+
+- **Function: user_input_data()**
+- **Calls: encryption_log.py**
+- **Calls: password encryption.py**
+- **Returns: The encrypted password, the corresponding website and the encryption key**
+(optional: mod variable to check for modifications in the password)
+
+Called from result() function in **manucrypt.py** to extract all just data submitted by
+the user.
+
+See previous summary of **user_inputs.py** in the 'Project Details: Getting Started'
+section.
+
+### password_strength.py
+
+- **Function: password_strength()**
+- **Calls: The Dropbox 'zxcvbn' algorithm: https://github.com/dropbox/zxcvbn**
+- **Returns: The password score, comments on the password and the hacker speed**
+
+Called from the result() function in **manucrypt.py**, the given password is sent through
+the 'zxcvbn' program to get a strength analysis. Comments are then assigned to the password
+score.
 
 ### results.html
 
-Displays the results of the user's encryptions so far. The page has been divided into
-sections using jinja to reduce the length of the code. The sections include the following:
+Once **user_input.py** has collected the data from the user input form, the
+**results.html** page displays the results of the user's encryptions so far. The page has
+been divided into sections using jinja to reduce the length of the code. The sections
+include the following:
 
-- Website: Displayed using password.html. Shows the website name that corresponds to the
-password that has been created. If the user has not specified a website, then
-www.example.com is used here.
+- Website: Displayed using **password.html**. Shows the website name that corresponds to
+the password that has been created. If the user has not specified a website, then
+'www.example.com' is used here.
 
-- Password: Displayed using password.html. Shows the password that would be used with the
-given website, including all of the user's encryptions so far.
+- Password: Displayed using **password.html**. Shows the password that would be used with
+the given website, including all of the user's encryptions so far.
 
-- Hacker speed: Displayed using score.html. Shows the estimated hacker speed to guess the
-given password, as calculated by 'zxcvbn'.
+- Hacker speed: Displayed using **score.html**. Shows the estimated hacker speed to guess
+the given password, as calculated by 'zxcvbn'.
 
-- Comments: Displayed using comments.html. Shows comments on the score of the password
+- Comments: Displayed using **comments.html**. Shows comments on the score of the password
 to incentivise the user to achieve a 4/4 score.
 
-- What next dropdown: Displayed using next.html. Gives the user options of what to do next with their password
-encryption.
+- 'What Next' dropdown: Displayed using **next.html**. Gives the user options of what to do
+next with their password encryption.
 
-- Start over button: Displayed using restart.html. Creates a warning pop up to make sure
+- 'Start Over' button: Displayed using restart.html. Creates a warning pop up to make sure
 that the user wants to start over. If the user selects ok, they are navigated back to the
 'getting started' page.
 
@@ -294,7 +326,7 @@ score. The colour system used red for a low score, through to green for a good s
 When a 4/4 score is reached, the box flashes and turns to white and party popper emojis
 are displayed. This gives the user incentive to achieve a high score with their
 encryption. Due to the complexity of the code to acheive the changing colours, the actual
-text is displayed using a seperate file - score_data.html.
+text is displayed using a seperate file - **score_data.html**.
 
 ### score_data.html
 
@@ -309,17 +341,17 @@ Displays the score comments in simple text.
 Displayed on the results.html page. Provides a dropdown of options to the user of what to
 do next with the password encryption, including the following:
 
-- Test the key on a different website: Diplayed using website.html. Give the user the
+- Test the key on a different website: Diplayed using **website.html**. Give the user the
 option to change the website from www.example.com. It can be changed to one of a list
 of website options from the dropdown, or the user can manually input a website name.
-- Add an encryption: Diplayed using encryption.html as used previously on
+- Add an encryption: Diplayed using **encryption.html** as used previously on
 getting_started.html. This is the user same input form for the user to specify another
 encryption method to include in their key.
 - Remove an encryption: Provides a dropdown for users to select which of their existing
 encryption methods to delete from the key.
-- View password requirements: Diplayed using requirements.html. Show a list of password
+- View password requirements: Diplayed using **requirements.html**. Show a list of password
 requirements to help the user in creating encryption methods.
-- View your encryption key: Diplayed using key.html. Shows the user's universal
+- View your encryption key: Diplayed using **key.html**. Shows the user's universal
 encryption key to remember for all of their passwords. It is diplayed as a numbered list
 of sentences describing each encryption method and the order in which to use them.
 
@@ -335,7 +367,7 @@ See previous summary of encryption.html in the 'Project Details: Getting Started
 ### requirements.html
 
 Displays the same list in plain text as previously used in the 'top tip' sections of the
-'getting started' page, showing password requirements that are typically required on
+**getting_started.html** page, showing password requirements that are typically required on
 website accounts.
 
 ### key.html
@@ -346,18 +378,3 @@ Displays the user's encryption key in simple text.
 
 Displays the 'start over' button and includes the script to trigger the warning pop-up
 box to confirm the reset with the user.
-
-### password_strength.py
-
-- Function password_strength()
-- Calls the Dropbox 'zxcvbn' algorithm: https://github.com/dropbox/zxcvbn
-- Returns the password score, comments on the password and the hacker speed.
-
-Called from the result() function in manucrypt.py, the given password is sent through the
-'zxcvbn' program to get a strength analysis. Comments are then assigned to the password
-score.
-
-
-
-
-
