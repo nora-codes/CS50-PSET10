@@ -1,6 +1,6 @@
-# CS50-PSET10
+# CS50-PSET10 Final Project: Manucrypt
 
-## Final Project: Manucrypt
+## Summary
 
 ### Video Demo
 
@@ -21,53 +21,53 @@ https://www.heroku.com
 Password speed calculated using Dropbox 'zxcvbn' alogrithm for Python:
 https://github.com/dwolfhub/zxcvbn-python
 
-### Project Details: Setup
+## Project Details: Setup
 
-#### Procfile
+### Procfile
 
 Used to declare what command should be executed to start the app.
 
 Ref: https://devcenter.heroku.com/articles/getting-started-with-python#define-a-procfile
 
-#### requirements.txt
+### requirements.txt
 
 Used to list the required packages for the app.
 
 Ref: https://boscacci.medium.com/why-and-how-to-make-a-requirements-txt-f329c685181e
 
-#### run.py
+### run.py
 
 Used to point Flask to the app and setting it to run.
 
 Ref: Guidance from https://www.section.io/engineering-education/complete-guide-on-installing-flask-for-beginners/
 
-#### runtime.txt
+### runtime.txt
 
 Used to specify which runtime to use on the app.
 
 Ref: https://devcenter.heroku.com/articles/python-runtimes
 
-#### __init__.py
+### __init__.py
 
 Used to specify that the directories containing the file should be treated as packages.
 
 Ref: https://newbedev.com/flask-importerror-no-module-named-app
 
-#### database.py
+### database.py
 
 Reads the database connection url from the environment variable.
 
-#### session_config.py
+### session_config.py
 
 Sets the Flask session configuration
 
-#### layout.html
+### layout.html
 
-#### error.html
+### error.html
 
-### Project Details: Run
+## Project Details: Run
 
-#### manucrypt.py
+### manucrypt.py
 
 Assigns the three .html pages to their respective app functions. Each function gets the
 required data for the page and renders the templates.
@@ -91,11 +91,11 @@ Result:
 - Renders error.html
 - Renders results.html
 
-### Project Details: Introduction
+## Project Details: Introduction
 
-#### introduction.html
+### introduction.html
 
-#### user session.py
+### user session.py
 
 - Function user_session()
 
@@ -130,13 +130,13 @@ session' function and a new session will be initiated
 
 - No return values
 
-### Project Details: Getting Started
+## Project Details: Getting Started
 
-#### getting_started.html
+### getting_started.html
 
-#### encryption.html
+### encryption.html
 
-#### user_inputs.py
+### user_inputs.py
 
 - Function getting_started()
 - Calls encryption_log.py
@@ -178,7 +178,7 @@ password_encryption.py.
 - Returns the encrypted password, the corresponding website and the encryption key
 - (optional: mod variable to check for modifications in the password)
 
-#### encryption_log.py
+### encryption_log.py
 
 - Function encryption_log()
 
@@ -201,7 +201,7 @@ of the data is created as a list of sentences to be presented on the results pag
 
 - Returns the encryption key (optional: false entry)
 
-#### password encryption.py
+### password encryption.py
 
 Called from user_inputs.py, the given encryption specification is applied to the base
 word.
@@ -222,22 +222,22 @@ Takes the base word and capitalises the characters specified by the user.
 
 - Returns the encrypted password
 
-### Project Details: Results
+## Project Details: Results
 
-#### results.html
+### results.html
 
-#### website.html
-#### password.html
-#### score.html
-#### score_data.html
-#### next.html
-#### encryption.html
-#### comments.html
-#### requirements.html
-#### key.html
-#### restart.html
+### website.html
+### password.html
+### score.html
+### score_data.html
+### next.html
+### encryption.html
+### comments.html
+### requirements.html
+### key.html
+### restart.html
 
-#### password_strength.py
+### password_strength.py
 
 - Function password_strength()
 - Calls the Dropbox 'zxcvbn' algorithm: https://github.com/dropbox/zxcvbn
