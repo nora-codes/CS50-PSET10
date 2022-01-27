@@ -65,43 +65,43 @@ lists their current encryption methods so they can memorise them.
 
 Used to declare what command should be executed to start the app.
 
-### requirements.txt
+### [requirements.txt](/requirements.txt)
 
 Used to list the required packages for the app.
 
-### run.py
+### [run.py](/run.py)
 
 Used to point Flask to the app and setting it to run.
 
-### runtime.txt
+### [runtime.txt](/runtime.txt)
 
 Used to specify which runtime to use on the app.
 
-### __init__.py
+### [__init__.py](/application/__init__.py.py)
 
 Used to specify that the directories containing the file should be treated as packages.
 
-### database.py
+### [database.py](/application/database.py.py)
 
 Reads the database connection url from the environment variable.
 
-### session_config.py
+### [session_config.py](/application/session_config.py.py)
 
 Sets the Flask session configuration
 
-### layout.html
+### [layout.html](/application/templates/layout.html.html)
 
 Sets out the .html template to use with Jinja for all pages, including meta tags, fonts,
 stylesheets, header and footer.
 
-### error.html
+### [error.html](/application/templates/error.html.html)
 
 Displays an error page when an error has been made by the user, showing an apology
 specific to the error.
 
 ## Project Details: Run
 
-### manucrypt.py
+### [manucrypt.py](/application/manucrypt.py.py)
 
 Assigns the three .html pages to their respective app functions. Each function gets the
 required data for the page and renders the templates.
@@ -127,25 +127,26 @@ required data for the page and renders the templates.
 
 ## Project Details: Introduction Page
 
-### introduction.html
+### [introduction.html](/application/templates/introduction.html.html)
 
 Displays a welcome page with information including:
-- Why it's important to use different and complex passwords for each of your accounts
-- An explantion of what encryption is
-- What the website does and how to use it
+- Why it's important to use different and complex passwords for each of your accounts.
+- An explantion of what encryption is.
+- What the website does and how to use it.
 
-Followed by a button that sends the user to the [***getting_started.html***](/application/templates/getting_started.html) page
+Followed by a button that sends the user to the
+[***getting_started.html***](/application/templates/getting_started.html) page.
 
 ## Project Details: Getting Started
 
-### user session.py
+### [user session.py](/application/user session.py.py)
 
 - ***Function: user_session()***
 - ***Return: None***
 
-Before the "getting_started.html is rendered, the 'getting started' function is called
-and initiates a session for the encryption. The session will be used to store data for the user's current encryption key in the
-database.
+Before the [***getting_started.html***](/application/templates/getting_started.html) is rendered,
+the 'getting started' function is called and initiates a session for the encryption.
+The session will be used to store data for the user's current encryption key in the database.
 
 **'Users Table'**
 A table is created for the user to store the session information:
@@ -155,8 +156,7 @@ A table is created for the user to store the session information:
 the oldest row in the table to the current user if there are no empty rows to use.
 
 **Encryption Table**
-A table is created to store the user's encryption data from the current
-session:
+A table is created to store the user's encryption data from the current session:
 - id: Uses a sequence that is created and stored as a session variable. The sequence
 starts at 1 and moves up in increments of 1. If a row is deleted in the table by the
 user, this sequence will be missing a number. In this case, the sequence and all the id
@@ -171,10 +171,12 @@ for the chosen encryption. The location is stored as a number where 1 reperesent
 first character, 2 represents the second, and so on.
 
 If the user wants to start again with their encryption key and reset all the data,
-they will be routed back to the 'getting started' page, which will call this 'user
-session' function and a new session will be initiated
+they will be routed back to the
+[***getting_started.html***](/application/templates/getting_started.html) page,
+which will call [***user_session.py***](/application/user_session.py.py) and a new session
+will be initiated.
 
-### getting_started.html
+### [getting_started.html](/application/templates/getting_started.html)
 
 Displays a page for the user to enter the firest encryption method of their key.
 
