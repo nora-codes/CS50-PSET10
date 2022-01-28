@@ -13,10 +13,10 @@ Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 
 ### References
 
-- Deployed on [Heroku](https://www.heroku.com)
+- Deployed on [Heroku](https://www.heroku.com).
 - Password speed calculated using Dropbox [zxcvbn](https://github.com/dwolfhub/zxcvbn-python)
-alogrithm for Python
-- Other references used in the writing of this app are included in the notes of the files
+alogrithm for Python.
+- Other references used in the writing of this app are included in the notes of the files.
 
 ## Project Details: TLDR Summary
 
@@ -33,15 +33,16 @@ password. So a base word is used to start off the password - as text to encrypt.
 more this base word is encrypted, the more difficult it is to hack into. The base word
 used on this app is the name of the website for which the user is creating a password.
 
-       *For example, if the website is facebook, the base word for the password will be*
-       *facebook.*
+       For example, if the website is facebook, the base word for the password will be facebook.
 
 - The user first creates a single encryption method to apply to the base word.
 
-       *For example, if the encryption is:* ***"add a '#' to the end of the text"***
+       For example, if the encryption is:
 
-       *The output of the password for facebook would be 'facebook#' or the password*
-       *for instagram would be 'instagram#' and so on...*
+           "add a '#' to the end of the text"
+
+       The output of the password for facebook would be 'facebook#' or the password
+       for instagram would be 'instagram#' and so on...*
 
 - The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
 website is "example". The user's encryption is initially applied to this default word
@@ -108,7 +109,7 @@ The main / root Python file that assigns the three .html pages to their respecti
 functions. Each function gets the required data for the page and renders the html
 templates.
 
-**Introduction Page**
+**Introduction Page**:
 
 Introduce the user to the website and the password encryption concept:
 
@@ -116,7 +117,7 @@ Introduce the user to the website and the password encryption concept:
 - Function: [index()](/application/manucrypt.py)
 - Renders: [introduction.html](/application/templates/introduction.html)
 
-**Getting Started Page**
+**Getting Started Page**:
 
 Guides the user through their first encryption method:
 
@@ -125,7 +126,7 @@ Guides the user through their first encryption method:
 - Calls: [user_session.py](/application/user_session.py)
 - Renders: [getting_started.html](/application/templates/getting_started.html)
 
-**Results Page**
+**Results Page**:
 
 Applies the user's first encryption method to an example website and password and
 presents a password strength analysis. The user can also add or remove other
@@ -154,7 +155,7 @@ Followed by a button that sends the user to the
 
 ### [user_session.py](/application/user_session.py)
 
-- ***Function:*** [user_session()***](/application/user_session.py)
+- ***Function:*** [***user_session()***](/application/user_session.py)
 - ***Return: None***
 
 Before the [***getting_started.html***](/application/templates/getting_started.html) is rendered,
