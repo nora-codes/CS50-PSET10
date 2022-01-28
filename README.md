@@ -1,15 +1,15 @@
 # CS50-PSET10 Final Project: Manucrypt
 
-### Video Demo
-
-https://youtu.be/xbEME2TbwcQ
-
 ### Description
 
 A website where users can create, modify and strength test a unique and universal
 password encryption key - to use on all of their accounts.
 
 Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
+
+### Video Demo
+
+https://youtu.be/xbEME2TbwcQ
 
 ### References
 
@@ -168,7 +168,7 @@ the user's current encryption key in the database.
 A table is created for the user to store their session information:
 
 - *ID*: A number between 1 and 20. The program will take the next available number.
--
+
 - *Session*: A session name is created in the format *"user_session_ID"* and stored as
 a session variable.
 
@@ -382,22 +382,30 @@ function is called.
 The user's most recent encryption specification is extracted from the user input form
 and entered (along with other information) into the following variables:
 - *Method*: Encryption method (add, replace or capitalise)
+
 - *Characters*: Characters entered by the user for the 'add' or 'replace' encryption
-- methods.
+methods.
+
 - *Location*: The location of the encryption method within the password, selected from a
 dropdown list.
+
 - *Custom Location*: When the user wants to input a speicific location that is not
 listed in the dropdown options.
+
 - *Remove*: If the user has selected to remove an encryption method, this variable
 specifies which encryption method to remove and it is removed using [***encryption_log.py***](/application/encryption_log.py).
+
 - *Base*: The base word for the encryption. The base word is the name of the website
 for which the password is being created. The user can choose the base word from a
 dropdown list of website names or type in their own. If the user has not selected a
 base word, then 'example' is used by default.
+
 - *Website*: Same as the baseword , but without the encryption applied. This variable
 will be used to display the website name to the user, along with it's corresponding
 password.
+
 - *Root*: The .html page from which the form was submitted.
+
 - *Mod*: A variable to record when a modification has been made to the password. If the
 page has been refreshed for example, no modifications have been made.
 
