@@ -1,7 +1,5 @@
 # CS50-PSET10 Final Project: Manucrypt
 
-## Summary
-
 ### Video Demo
 
 https://youtu.be/xbEME2TbwcQ
@@ -15,39 +13,42 @@ Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 
 ### References
 
-Deployed on [Heroku](https://www.heroku.com)
-
-Password speed calculated using Dropbox ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python)
+- Deployed on [Heroku](https://www.heroku.com)
+- Password speed calculated using Dropbox [zxcvbn](https://github.com/dwolfhub/zxcvbn-python)
 alogrithm for Python
-
-Other references used in the writing of this app are included in the notes of the files
+- Other references used in the writing of this app are included in the notes of the files
 
 ## Project Details: TLDR Summary
 
-Details of all of the files in the app are included below, but if that's too long to
-read, here is a summary of what the app does:
+Details of all the individual files in the app are included in the sections below, but
+if that's too long to read, here is a summary of what the app does:
 
-- A base word is used to start a password. The base word used on this app is the name of
-the website for which the user is making a password.
+- The tools on the website allow the user to design an encryption key to use on
+passwords for all of their online accounts. This means that instead of having to
+remember different passwords for each account, or even use a password manager, all
+the user needs to do is remember one encryption key.
 
-    *For example, if the website is facebook, the base word for the password will be*
-    *facebook.*
+- In order to use encrytion, the user needs text to encrypt in order to create a
+password. So a base word is used to start off the password - as text to encrypt. The
+more this base word is encrypted, the more difficult it is to hack into. The base word
+used on this app is the name of the website for which the user is creating a password.
 
-- The user then creates a single encryption method to apply to the base word.
+       *For example, if the website is facebook, the base word for the password will be*
+       *facebook.*
 
-    *For example, if the encryption is:*
+- The user first creates a single encryption method to apply to the base word.
 
-    *'add a '#' to the end of the text'*
+       *For example, if the encryption is:* ***"add a '#' to the end of the text"***
 
-    *The output of the password for facebook would be 'facebook#' or the password for*
-    *instagram would be 'instagram#' and so on...*
+       *The output of the password for facebook would be 'facebook#' or the password*
+       *for instagram would be 'instagram#' and so on...*
 
-- The default website is 'ww<span>w.</span>example.com' and the corresponding base word for this
-website is 'example. The user's encryption is first applied to this default and can be
-changed later.
+- The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
+website is "example". The user's encryption is initially applied to this default word
+"example".
 
-- The app then analyses this password output and provides the user with a strength score
-and an approximate hacking speed.
+- The app then analyses this "example" password output and provides the user with a
+strength score and an approximate hacking speed.
 
 - The user can then add or remove single encryption methods to the overall encryption
 until they are happy with their password score and hacker speed.
@@ -56,13 +57,14 @@ until they are happy with their password score and hacker speed.
 and concequently, the strength of the password.
 
 - Once the user is happy with their encryption, they can view an encryption key which
-lists their current encryption methods so they can memorise them.
+lists all of their current encryption methods, so they can memorise the key and start
+using it on their actual passwords.
 
 ## Project Details: Setup
 
 ### [Procfile](/Procfile)
 
-Used to declare what command should be executed to start the app.
+Used to declare what command should be executed to start the app on [Heroku](https://www.heroku.com).
 
 ### [requirements.txt](/requirements.txt)
 
@@ -70,15 +72,15 @@ Used to list the required packages for the app.
 
 ### [run.py](/run.py)
 
-Used to point Flask to the app and setting it to run.
+Used to point Flask to the app and set it to run.
 
 ### [runtime.txt](/runtime.txt)
 
 Used to specify which runtime to use on the app.
 
-### [__init__.py](/application/__init__.py)
+### [init.py](/application/__init__.py)
 
-Used to specify that the directories containing the file should be treated as packages.
+Used to specify that the manucrypt directory is a Python package.
 
 ### [database.py](/application/database.py)
 
@@ -86,7 +88,7 @@ Reads the database connection url from the environment variable.
 
 ### [session_config.py](/application/session_config.py)
 
-Sets the Flask session configuration
+Sets the Flask session configuration.
 
 ### [layout.html](/application/templates/layout.html)
 
@@ -95,34 +97,46 @@ stylesheets, header and footer.
 
 ### [error.html](/application/templates/error.html)
 
-Displays an error page when an error has been made by the user, showing an apology
-specific to the error.
+A template to display an apology when an error has been made by the user, showing an
+apology message that is specific to the error.
 
 ## Project Details: Run
 
 ### [manucrypt.py](/application/manucrypt.py)
 
-Assigns the three .html pages to their respective app functions. Each function gets the
-required data for the page and renders the templates.
+The main / root Python file that assigns the three .html pages to their respective app
+functions. Each function gets the required data for the page and renders the html
+templates.
 
 **Introduction Page**
+
+Introduce the user to the website and the password encryption concept:
+
 - Route: "/"
-- Function: index()
-- Renders: introduction.html
+- Function: [index()](/application/manucrypt.py)
+- Renders: [introduction.html](/application/templates/introduction.html)
 
 **Getting Started Page**
+
+Guides the user through their first encryption method:
+
 - Route: "/getting_started"
-- Function: getting_started()
-- Calls: user_session.py
-- Renders: getting_started.html
+- Function: [getting_started()](/application/manucrypt.py)
+- Calls: [user_session.py](/application/user_session.py)
+- Renders: [getting_started.html](/application/templates/getting_started.html)
 
 **Results Page**
+
+Applies the user's first encryption method to an example website and password and
+presents a password strength analysis. The user can also add or remove other
+encrytion methods to their universal encryption key, test the encryption out on other
+websites and view their encryption key for memorisation.
+
 - Route: "/results"
-- Function: result()
-- Calls: user_inputs.py
-- Calls: password_strength.py
-- Renders: error.html
-- Renders: results.html
+- Function: [result()](/application/manucrypt.py)
+- Calls: [user_inputs.py](/application/user_inputs.py)
+- Calls: [password_strength.py](/application/password_strength.py)
+- Renders: [results.html](/application/templates/results.html)
 
 ## Project Details: Introduction Page
 
@@ -134,168 +148,87 @@ Displays a welcome page with information including:
 - What the website does and how to use it.
 
 Followed by a button that sends the user to the
-[***getting_started.html***](/application/templates/getting_started) page.
+[***getting_started.html***](/application/templates/getting_started.html) page.
 
 ## Project Details: Getting Started Page
 
 ### [user_session.py](/application/user_session.py)
 
-- ***Function: user_session()***
+- ***Function:*** [user_session()***](/application/user_session.py)
 - ***Return: None***
 
 Before the [***getting_started.html***](/application/templates/getting_started.html) is rendered,
-the 'getting started' function is called and initiates a session for the encryption.
-The session will be used to store data for the user's current encryption key in the database.
+the user_session() function is called from [manucrypt.py](/application/manucrypt.py)
+and initiates a session for the encryption.The session will be used to store data for
+the user's current encryption key in the database.
 
 **Users Table**
 
-A table is created for the user to store the session information:
-- ID: A number between 1 and 20. The program will take the next available number.
-- session: A session name that is created and stored as a session variable
-- time: A timestamp from when the session was initiated. This is used to reallocate
-the oldest row in the table to the current user if there are no empty rows to use.
+A table is created for the user to store their session information:
+
+- *ID*: A number between 1 and 20. The program will take the next available number.
+-
+- *Session*: A session name is created in the format *"user_session_ID"* and stored as
+a session variable.
+
+- *Time*: A timestamp from when the session was initiated. This is used to reallocate
+the oldest row in the table to the current user, if there are no empty rows to use.
 
 **Encryption Table**
 
 A table is created to store the user's encryption data from the current session:
-- ID: Uses a sequence that is created and stored as a session variable. The sequence
-starts at 1 and moves up in increments of 1. If a row is deleted in the table by the
-user, this sequence will be missing a number. In this case, the sequence and all the ID
-numbers can be reset.
-- method: This is the method of encryption chosen by the user. The options are 'add
-- characters', 'replace characters' and 'capitalise characters'.
-- location: This is the location of the chosen encryption in the password. This will
-be stored as characters because the user will choose the location from a dropdown list,
-with options such as 'first character', 'last character' and 'between all characters'.
-- custom location: This is an option column for when the user inputs a specific location
-for the chosen encryption. The location is stored as a number where 1 reperesents the
-first character, 2 represents the second, and so on.
 
-If the user wants to start again with their encryption key and reset all the data,
+- *ID*: A sequence is created, stored as a session variable and used to allocate the
+next available ID number. The sequence starts at 1 and moves up in increments of 1. If
+a row is deleted in the table by the user (because they request to remove an
+encryption), an ID number in the table will be missing and the IDs will be out of
+sequence. In this case, the session sequence is reset back to 1 and all of the IDs in
+the table are reallocated in sequence.
+
+- *Method*: The method of encryption chosen by the user. The options are 'add
+characters', 'replace characters' and 'capitalise characters'.
+
+- *Location*: The location of the chosen encryption within the password. The user can
+choose the location from a dropdown list, with options such as 'first character',
+'last character' and 'between all characters'.
+
+- *Custom Location*: This is an optional column in the table for when the user wants
+to add their encryption in a location not provided in the dropdown list. The location
+is stored as a number where 1 reperesents the first character in the password, 2
+represents the second, and so on.
+
+If the user wants to start again with their encryption key and reset all of the data,
 they will be routed back to the [***getting_started.html***](/application/templates/getting_started.html)
-page, which will call [***user_session.py***](/application/user_session.py) and a new session
-will be initiated.
+page, which will call [***user_session.py***](/application/user_session.py) again and
+a new session will be initiated.
 
 ### [getting_started.html](/application/templates/getting_started.html)
 
-Displays a page for the user to enter the firest encryption method of their key.
+Once a session has been initiated in [***user_session.py***](/application/user_session.py)
+this page is displayed for the user to enter the first encryption method of their key.
 
-An explanation is shown that the encryption will first be tested on the base word
-'example', which creates a password that would be used on 'ww<span>w.</span>example.com'
+It is explained to the user that the encryption will first be tested on the base word
+'example', which creates a password that would be used for a website called
+'ww<span>w.</span>example.com'
 
 A collapsable 'top tip' is included to give the user ideas on what types of encryption would
-be useful on a real site
+be useful on a real website.
 
-The the user input form is displayed using [***encryption.html***](/application/templates/encryption.html).
-This is where the user specifies an encryption method to include in their universal encryption
-key.
+[***Encryption.html***](/application/templates/encryption.html) (see Project Details: Password Encryption
+section) is used to display the user input form. This form is where the user specifies an encryption method to include
+in their universal encryption key.
 
 When the user clicks the 'test password' button, [***user_inputs.py***](/application/user_inputs.py)
-is called and they are navigated to the [***results.html***](/application/templates/results.html) page.
-
-### [encryption.html](/application/templates/encryption.html)
-
-The user input form with the following options:
-
-- Add characters: Type in characters to add and choose the location to add them either
-from a dropdown list or manually entered by the user.
-
-- Replace characters: Choose the location of the characters to replace, either from a
-dropdown list or manually entered but the user and type in characters to replace them
-with.
-
-- Capitalise characters: Choose the location of the characters to capitalise, either from
-a dropdown list or manually entered by the user.
-
-### [user_inputs.py](/application/user_inputs.py)
-
-- ***Function: user_input_data()***
-- ***Calls: encryption_log.py***
-- ***Calls: password encryption.py***
-- ***Returns: The encrypted password, the corresponding website and the encryption key***
-(optional: mod variable to check for modifications in the password)
-
-Called from the user input form, which can be submitted by the user from the [***getting_started.html***](/application/templates/getting_started.html)
-or [***results.html***](/application/templates/results.html) page.
-
-The user's most recent encryption specification is extracted from the user input form
-and entered (along with other information) into variables:
-- method: Encryption method (add, replace or capitalise)
-- characters: Characters entered by the user for 'add' or 'replace' encryption methods.
-- location: The location of the encryption method in the password, selected from a
-dropdown list.
-- custom location: When the user has entered a specific location for the encryption
-method.
-- remove: If the user has selected to remove an encryption method, this variable
-specifies which encryption method to remove and it is removed using [***encryption_log.py***](/application/encryption_log.py).
-- base: The base word for the encryption. The user can choose the base word from a
-dropdown list of website names or type in their own. If the user has not selected a base
-word, then 'example' is used by default.
-- website: Same as base, but without the encryption applied. This variable will be used
-to display the website name, along with it's corresponding password.
-- root: The .html page from which the form was submitted
-- mod: A variable to record when a modification has been made to the password. If the
-page has been refreshed for example, no modifications have been made.
-
-When the program is extracting this data from the user input form, it looks for specific
-errors caused by the user and returns a custom apology note based on the error.
-
-The user's encryption table is accessed and all previously defined encryption methods
-are applied to the base word using [***password_encryption.py***](/application/password_encryption.py).
-
-Then the user's most recent encryption method added to the user's encryption table using
-[***encryption_log.py***](/application/encryption_log.py)
-and an encyption key is created.
-
-Then the user's most recent encryption method is applied to the base word using [***password_encryption.py***](/application/password_encryption.py).
-
-### [password_encryption.py](/application/password_encryption.py)
-
-- ***Function: encryption_add()***
-- ***Function: encryption_replace()***
-- ***Function: encryption_capitalise()***
-- ***Returns: The encrypted password***
-
-Called from [***user_inputs.py***](/application/user_inputs.py), the given encryption
-specification is applied to the base word.
-
-- Add Function: Takes the base word and adds the user's specified characters to the word in the
-location also specified by the user.
-
-- Replace Function: Takes the base word and replaces the characters specified by the user with
-the characters also specified by the user.
-
-- Capitalise Function: Takes the base word and capitalises the characters specified by the user.
-
-### [encryption_log.py](/application/encryption_log.py)
-
-- ***Function: encryption_log()***
-- ***Returns: The encryption key (optional: false entry)***
-
-Called from [***user_inputs.py***](/application/user_inputs.py), the encryption log is used to
-keep track of the user's encryptions within the current session.
-
-First, the data from the user's most recent request is updated in the user's encryption
-table.
-
-- If the user has added an encryption, the details of the encryption are inserted into the
-table in the next available slot.
-
-- If the user has requested to remove an encryption, the specificed encryption row is
-removed from the encryption table. This however, causes the IDs for the rows in the table
-to be out of sequence, so the session variable sequence and IDs in the table are reset.
-
-Then, an encryption key is created to allow the user to remember all of their encryption
-methods. The raw data from the encryption table is not readable, so a readable version
-of the data is created as a list of sentences to be presented on the results page.
+(see Project Details: Password Encryption section) is called and they are navigated
+to the [***results.html***](/application/templates/results.html) page.
 
 ## Project Details: Results Page
 
 ### [user_inputs.py](/application/user_inputs.py)
 
-- ***Function: user_input_data()***
-- ***Calls: encryption_log.py***
-- ***Calls: password encryption.py***
+- ***Function:*** [***user_input_data()***](/application/user_inputs.py)
+- ***Calls:*** [***encryption_log.py***](/application/encryption_log.py)
+- ***Calls:*** [***password_encryption.py***](/application/password_encryption.py)
 - ***Returns: The encrypted password, the corresponding website and the encryption key***
 (optional: mod variable to check for modifications in the password)
 
@@ -308,41 +241,45 @@ and [***encryption_log.py***](/application/encryption_log.py).
 
 ### [password_strength.py](/application/password_strength.py)
 
-- ***Function: password_strength()***
-- ***Calls: The Dropbox 'zxcvbn' algorithm: https://github.com/dropbox/zxcvbn***
+- ***Function:*** [password_strength()](/application/password_strength.py)
+- ***Calls: Dropbox*** [***zxcvbn***](https://github.com/dwolfhub/zxcvbn-python)
 - ***Returns: The password score, comments on the password and the hacker speed***
 
-Called from the result() function in [***manucrypt.py***](/application/manucrypt.py), the given
-password is sent through the ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python) program to
-get a strength analysis. Comments are then assigned to the password score.
+In the results() function of [***manucrypt.py***](/application/manucrypt.py), the
+encrypted password, the corresponding website and the encryption key are returned from
+[***user_inputs.py***](/application/user_inputs.py) (see Project Details: Password
+Encryption section). The password_strength() function is then called to get a strength
+analysis of the password using ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python). A
+password score, comments and hacking speed are assigned to the password.
 
 ### [results.html](/application/templates/results.html)
 
-Once [***user_inputs.py***](/application/user_inputs.py) has collected the data from the user
-input form, the [***results.html***](/application/templates/results.html) page displays the
-results of the user's encryptions so far. The page has been divided into sections using jinja
-to reduce the length of the code. The sections include the following:
+Once all the data has been collected, the [***results.html***](/application/templates/results.html)
+page displays the results of the user's encryptions so far. The page has been divided
+into sections using jinja to reduce the length of the code. The sections include the
+following:
 
-- Website: Displayed using [***password.html***](/application/templates/password.html). Shows the
+- *Website*: Displayed using [***password.html***](/application/templates/password.html). Shows the
 website name that corresponds to the password that has been created. If the user has not
 specified a website, then 'ww<span>w.</span>example.com' is used here.
 
-- Password: Displayed using [***password.html***](/application/templates/password.html). Shows
-the password that would be used with the given website, including all of the user's encryptions
-so far.
+- *Password*: Displayed using [***password.html***](/application/templates/password.html). Shows
+the encrypted password that would be used with the given website, including all of the
+user's encryptions in the session.
 
-- Hacker speed: Displayed using [***score.html***](/application/templates/score.html). Shows the
-estimated hacker speed to guess the given password, as calculated by 'zxcvbn'.
+- *Hacker speed*: Displayed using [***score.html***](/application/templates/score.html). Shows the
+estimated hacker speed to guess the given password, as calculated by ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python).
 
-- Comments: Displayed using [***comments.html***](/application/templates/comments.html). Shows
+- *Comments*: Displayed using [***comments.html***](/application/templates/comments.html). Shows
 comments on the score of the password to incentivise the user to achieve a 4/4 score.
 
-- 'What Next' dropdown: Displayed using [***next.html***](/application/templates/next.html).
+- *'What Next' Dropdown*: Displayed using [***next.html***](/application/templates/next.html).
 Gives the user options of what to do next with their password encryption.
 
-- 'Start Over' button: Displayed using restart.html. Creates a warning pop up to make sure
-that the user wants to start over. If the user selects ok, they are navigated back to the
-'getting started' page.
+- *'Start Over' Button*: Displayed using [***restart.html***](/application/templates/restart.html).
+- Produces a warning pop-up to make sure that the user wants to start over. If the user
+selects ok, they are navigated back to the [***getting_started.html***](/application/templates/getting_started.html)
+page.
 
 ### [password.html](/application/templates/password.html)
 
@@ -351,11 +288,12 @@ Displays the website and password in simple text.
 ### [score.html](/application/templates/score.html)
 
 Displays a box which changes colour in a traffic light system according to the password
-score. The colour system used red for a low score, through to green for a good score.
+score. The colour system uses red for a low score, through to green for a good score.
 When a 4/4 score is reached, the box flashes and turns to white and party popper emojis
 are displayed. This gives the user incentive to achieve a high score with their
-encryption. Due to the complexity of the code to acheive the changing colours, the actual
-text is displayed using a seperate file - [***score_data.html***](/application/templates/score_data.html).
+encryption. Due to the repetetive nature of the code required to acheive the changing
+colours, the actual text of the score is displayed using a seperate file -
+[***score_data.html***](/application/templates/score_data.html).
 
 ### [score_data.html](/application/templates/score_data.html)
 
@@ -367,45 +305,160 @@ Displays the score comments in simple text.
 
 ### [next.html](/application/templates/next.html)
 
-Displayed on the results.html page. Provides a dropdown of options to the user of what to
-do next with the password encryption, including the following:
+Provides a dropdown list, giving the user options of what to do next with the
+encryption, including the following:
 
-- Test the key on a different website: Diplayed using [***website.html***](/application/templates/website.html).
-Give the user the option to change the website from 'ww<span>w.</span>example.com'. It can be
-changed to one of a list of website options from the dropdown, or the user can manually input
-a website name.
-- Add an encryption: Diplayed using [***encryption.html***](/application/templates/encryption.html)
-as used previously on getting_started.html. This is the user same input form for the user to
-specify another encryption method to include in their key.
-- Remove an encryption: Provides a dropdown for users to select which of their existing
-encryption methods to delete from the key.
-- View password requirements: Diplayed using [***requirements.html***](/application/templates/requirements.html).
-Show a list of password requirements to help the user in creating encryption methods.
-- View your encryption key: Diplayed using [***key.html***](/application/templates/key.html).
-Shows the user's universal encryption key to remember for all of their passwords. It is diplayed
-as a numbered list of sentences describing each encryption method and the order in which to use
-them.
+- *Test the key on a different website*: Displayed using [***website.html***](/application/templates/website.html).
+Gives the user the option to change the website from 'ww<span>w.</span>example.com'. It
+can be changed to one of a list of website options from the dropdown, or the user can
+manually input a website name.
+
+- *Add an encryption*: Diplayed using [***encryption.html***](/application/templates/encryption.html)
+(see Project Details: Password Encryption section) as used previously on [***getting_started.html***](/application/templates/getting_started.html).
+This is the same user input form to specify an additional encryption method to
+include in their universal key.
+
+- *Remove an encryption*: Provides a dropdown for users to select which of their existing
+encryption methods to delete from the key. The deletion is executed by [***encryption_log.py***](/application/encryption_log.py)
+(see Project Details: Password Encryption section).
+
+- *View password requirements*: Displayed using [***requirements.html***](/application/templates/requirements.html).
+Shows a list of standard password requirements to help the user in creating new
+encryption methods.
+
+- *View your encryption key*: Displayed using [***key.html***](/application/templates/key.html).
+Shows the user's universal encryption key to memorise for all of their passwords.
 
 ### [website.html](/application/templates/website.html)
 
 Displays a dropdown of website options for the user to choose from. One of the options
-is 'test your own...' where the user can type in a website name instead.
-
-### [encryption.html](/application/templates/encryption.html)
-
-See previous summary of encryption.html in the 'Project Details: Getting Started' section.
+is 'test your own...', where the user can type in a website custom name instead.
 
 ### [requirements.html](/application/templates/requirements.html)
 
 Displays the same list in plain text as previously used in the 'top tip' sections of the
-[**getting_started.html**](/application/templates/getting_started.html) page, showing password
-requirements that are typically required on website accounts.
+[**getting_started.html**](/application/templates/getting_started.html) page, shows
+password requirements that are typically required on website accounts.
 
 ### [key.html](/application/templates/key.html)
 
-Displays the user's encryption key in simple text.
+Displays the user's encryption key as a numbered list of sentences describing each
+encryption method and the order in which to use them.
 
 ### [restart.html](/application/templates/ )
 
-Displays the 'start over' button and includes the script to trigger the warning pop-up
+Provides a 'start over' button and includes the script to trigger a warning pop-up
 box to confirm the reset with the user.
+
+## Project Details: Password Encryption
+
+### [encryption.html](/application/templates/encryption.html)
+
+Contains the user input form with the following options:
+
+- *Add Characters*: The user types in characters to add to the password and chooses the
+location for them within the password, either from a dropdown list or entered manually.
+
+- *Replace Characters*: The user chooses the location of the characters in the password
+to replace, either from a dropdown list or entered manually. Then they type in
+new characters to replace the old ones with.
+
+- *Capitalise Characters*: The user chooses the location of the characters to
+capitalise, either from a dropdown list or entered manually.
+
+### [user_inputs.py](/application/user_inputs.py)
+
+- ***Function:*** [***user_input_data()***](/application/user_inputs.py)
+- ***Calls:*** [***encryption_log.py***](/application/encryption_log.py)
+- ***Calls:*** [***password_encryption.py***](/application/password_encryption.py)
+- ***Returns: The encrypted password, the corresponding website and the encryption key***
+(optional: mod variable to check for modifications in the password)
+
+Once the user has submitted the user input form on the [***getting_started.html***](/application/templates/getting_started.html)
+or [***results.html***](/application/templates/results.html) page. The user_input_data()
+function is called.
+
+The user's most recent encryption specification is extracted from the user input form
+and entered (along with other information) into the following variables:
+- *Method*: Encryption method (add, replace or capitalise)
+- *Characters*: Characters entered by the user for the 'add' or 'replace' encryption
+- methods.
+- *Location*: The location of the encryption method within the password, selected from a
+dropdown list.
+- *Custom Location*: When the user wants to input a speicific location that is not
+listed in the dropdown options.
+- *Remove*: If the user has selected to remove an encryption method, this variable
+specifies which encryption method to remove and it is removed using [***encryption_log.py***](/application/encryption_log.py).
+- *Base*: The base word for the encryption. The base word is the name of the website
+for which the password is being created. The user can choose the base word from a
+dropdown list of website names or type in their own. If the user has not selected a
+base word, then 'example' is used by default.
+- *Website*: Same as the baseword , but without the encryption applied. This variable
+will be used to display the website name to the user, along with it's corresponding
+password.
+- *Root*: The .html page from which the form was submitted.
+- *Mod*: A variable to record when a modification has been made to the password. If the
+page has been refreshed for example, no modifications have been made.
+
+When the program is extracting this data from the user input form, it looks for
+errors caused by the user and returns a custom apology note on the [***error.html***](/application/templates/error.html)
+page, based on the specific error.
+
+The user's most recent encryption method added to the user's encryption table on the
+database using [***encryption_log.py***](/application/encryption_log.py), and an
+encyption key is created.
+
+The user's updated encryption table is then used to apply all previously defined
+encryption methods to the base word, along with the most recently specified one, using
+[***password_encryption.py***](/application/password_encryption.py).
+
+### [error.html](/application/templates/error.html)
+
+See previous summary of [***error.html***](/application/templates/error.html) in the
+'Project Details: Setup' section.
+
+### [encryption_log.py](/application/encryption_log.py)
+
+- ***Function:*** [***encryption_log()***](/application/encryption_log.py)
+- ***Returns: The encryption key*** (optional: false entry)
+
+Called from [***user_inputs.py***](/application/user_inputs.py), the encryption log is
+used to keep track of the user's encryptions within the current session, using the
+database.
+
+First, the data from the user's most recent request is updated the user's encryption
+table.
+
+- If the user has added an encryption, the specification of the encryption are inserted
+into the table in the next available slot.
+
+- If the user has requested to remove an encryption, the specificed encryption row is
+removed from the table. When a row is removed from the table, an ID number
+in the table will be missing and the IDs will be out of sequence. In this case, the
+session sequence is reset back to 1 and all of the IDs in the table are reallocated
+in sequence.
+
+Once the table has been updated, an encryption key is created to allow the user to
+remember all of their encryption methods. The raw data from the encryption table is not
+readable, so a readable version of the data is created as a list of clear sentences to
+be presented on the [***results.html***](/application/templates/results.html) page.
+
+### [password_encryption.py](/application/password_encryption.py)
+
+- ***Function:*** [***encryption_add()***](/application/password_encryption.py)
+- ***Function:*** [***encryption_replace()***](/application/password_encryption.py)
+- ***Function:*** [***encryption_capitalise()***](/application/password_encryption.py)
+- ***Returns: The encrypted password***
+
+Called from [***user_inputs.py***](/application/user_inputs.py), once the user's
+encryption table has been updated in the database with the most recent entry, it
+can be applied to the base word. There are three functions in this file:
+
+- *Add Function*: Takes the base word and adds the user's specified characters to the
+word in the location specified.
+
+- *Replace Function*: Takes the base word and replaces the characters specified by the
+user with the characters specified.
+
+- *Capitalise Function*: Takes the base word and capitalises the characters specified by
+the user.
