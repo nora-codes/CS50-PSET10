@@ -96,7 +96,11 @@ def user_session():
         # Allocate a user sequence name and store it as a session variable
         session['user_seq'] = "user_seq_%s" % user_id
         user_seq = session.get('user_seq')
-        # Create a user sequence in the database
+        # Delete any previously allocated sequences in the database with the same name
+        # drop sequence: https://www.postgresql.org/docs/9.1/sql-dropsequence.html
+        delete_seq = """DROP SEQUENCE %s CASCADE"""
+        cursor.execute(delete_seq % user_seq)
+        # Create a new user sequence in the database
         # create sequence: https://www.postgresqltutorial.com/postgresql-serial/
         create_seq = """CREATE SEQUENCE %s"""
         cursor.execute(create_seq % user_seq)
