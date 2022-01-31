@@ -11,6 +11,37 @@ Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 
 https://youtu.be/xbEME2TbwcQ
 
+### Personal Comments
+
+I have been encrypting my passwords using this method for years and during this time, 
+I have been explaining the idea to anyone that would listen. I thought it would be a 
+useful tool to create for my final project and help others in using my password method.
+
+I started very small and wrote a program that worked on the command line. I then scaled 
+it to work as a web page, spent some time on the UX/UI and added a database to allow 
+for multiple encryption methods.
+
+I then used [Heroku](https://www.heroku.com) to get it online for others to access. I 
+chose this platform after some research as it promised to get the app up and running 
+very quicky. In hindsight, I regret this decision because for the time it took me to 
+learn how to get the app working on Heroku, I could have invested that time learning 
+how to deploy the app online myself.
+
+Since it has been running online, I have expanded the database to allow multiple users 
+to access the website simultaneously. This meant that I could send the it to 
+friends for feedback. They were able to point out improvements in the UI/UX and find 
+bugs that I was unaware of.
+
+After implementing all of the feedback and refining the app further, I decided to
+finish working on the project. I have come so far since the beginning of this
+project and learned so much more than I thought I would, in order to get it to
+work the way that it does. 
+
+All this growth however, means that if I were to start the project again, I would 
+definitely write the code in a completely different, much more efficient way. But 
+that's ok. For now, the app is working and available for people to access and 
+maybe I can come back to it in the future and make it much, much better!
+
 ### References
 
 - Deployed on [Heroku](https://www.heroku.com).
@@ -33,16 +64,16 @@ password. So a base word is used to start off the password - as text to encrypt.
 more this base word is encrypted, the more difficult it is to hack into. The base word
 used on this app is the name of the website for which the user is creating a password.
 
-       For example, if the website is facebook, the base word for the password will be facebook.
+   For example, if the website is facebook, the base word for the password will be facebook.
 
 - The user first creates a single encryption method to apply to the base word.
 
-       For example, if the encryption is:
+   For example, if the encryption is:
 
-           "add a '#' to the end of the text"
+     "add a '#' to the end of the text"
 
-       The output of the password for facebook would be 'facebook#' or the password
-       for instagram would be 'instagram#' and so on...*
+    The output of the password for facebook would be 'facebook#' or the password
+    for instagram would be 'instagram#' and so on...*
 
 - The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
 website is "example". The user's encryption is initially applied to this default word
