@@ -59,6 +59,8 @@ passwords for all of their online accounts. This means that instead of having to
 remember different passwords for each account, or even use a password manager, all
 the user needs to do is remember one encryption key.
 
+### Using a base word:
+
 In order to use encrytion, the user needs text to encrypt. A 'base word' is used
 as the inital text to be encrypted and once encryption has been used to modify
 the base word, it can be used as a password. The more the base word is encrypted,
@@ -67,24 +69,30 @@ of the website for which the user is creating a password.
 
    > *For example, if the website is facebook, the base word for the password will be facebook.*
 
+### Applying the initial encryption:
+
 The user first creates a single encryption method to apply to the base word.
 
-   > *For example, if the encryption is:*
-
-   > *"add a '#' to the end of the text"*
+   > *For example, if the encryption is:* ***"add a '#' to the end of the text"***
 
    > *The output of the password for facebook would be 'facebook#' or the password*
    > *for instagram would be 'instagram#' and so on...*
+
+### Using the encryption on different websites:
 
 The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
 website is "example". The user's encryption is initially applied to this default word
 "example". The app then analyses this "example" password output and provides the user with a
 strength score and an approximate hacking speed.
 
+### Strengthening and refining the encryption:
+
 The user can then add or remove single encryption methods to the overall encryption
 until they are happy with their password score and hacker speed. The user can also test their
 encryption with other websites, as this changes the password and concequently, the strength
 of the password.
+
+### Remembering the password encryption:
 
 Once the user is happy with their encryption, they can view an encryption key which
 lists all of their current encryption methods, so they can memorise the key and start
