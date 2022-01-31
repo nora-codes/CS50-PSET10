@@ -54,6 +54,8 @@ alogrithm for Python.
 Details of all the individual files in the app are included in the sections below, but
 if that's too much to read, here is a summary of what the app does:
 
+### Introduction:
+
 The tools on the website allow the user to design an encryption key to use on
 passwords for all of their online accounts. This means that instead of having to
 remember different passwords for each account, or even use a password manager, all
