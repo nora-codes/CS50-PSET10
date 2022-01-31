@@ -34,7 +34,7 @@ bugs that I was unaware of.
 
 After implementing all of the feedback and refining the app further, I decided to
 finish working on the project. I have come so far since the beginning of this
-project and learned so much more than I thought I woul - in order to get it to
+project and learned so much more than I thought I would - in order to get it to
 work the way that it does.
 
 All this growth however, means that if I were to start the project again, I would
