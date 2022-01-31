@@ -174,7 +174,7 @@ encryption out on other websites and view their encryption key for memorisation.
 
 - Route: "/results"
 - Function: [result()](/application/manucrypt.py)
-- Calls: [***user_input_data()***](/application/user_inputs.py) from [user_inputs.py](/application/user_inputs.py)
+- Calls: [user_input_data()](/application/user_inputs.py) from [user_inputs.py](/application/user_inputs.py)
 - Calls: [password_strength()](/application/password_strength.py) from [password_strength.py](/application/password_strength.py)
 - Renders: [results.html](/application/templates/results.html)
 
@@ -274,7 +274,7 @@ In the [result()](/application/manucrypt.py) function of [***manucrypt.py***](/a
 the encrypted password, the corresponding website and the encryption key are returned from
 [***user_inputs.py***](/application/user_inputs.py) (see Project Details: Password
 Encryption section). The [***password_strength()***](/application/password_strength.py)
-function is then called to get a strength analysis of the password using ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python). A
+function is then called to get a strength analysis of the password using [***'zxcvbn'***](https://github.com/dwolfhub/zxcvbn-python). A
 password score, comments and hacking speed are assigned to the password.
 
 ### [results.html](/application/templates/results.html)
@@ -293,7 +293,7 @@ the encrypted password that would be used with the given website, including all 
 user's encryptions in the session.
 
 - *Hacker speed*: Displayed using [***score.html***](/application/templates/score.html). Shows the
-estimated hacker speed to guess the given password, as calculated by ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python).
+estimated hacker speed to guess the given password, as calculated by [***'zxcvbn'***](https://github.com/dwolfhub/zxcvbn-python).
 
 - *Password Score*: Displayed using [***score.html***](/application/templates/score.html). Shows
 a password score out of 4, as calculated by ['zxcvbn'](https://github.com/dwolfhub/zxcvbn-python).
@@ -369,7 +369,7 @@ password requirements that are typically required on website accounts.
 Displays the user's encryption key as a numbered list of sentences describing each
 encryption method and the order in which to use them.
 
-### [restart.html](/application/templates/ )
+### [restart.html](/application/templates/restart.html)
 
 Displays a button to delete all of the data in the user's current
 session and start over. Also includes the script to trigger a warning pop-up
@@ -381,7 +381,7 @@ to the [***getting_started.html***](/application/templates/getting_started.html)
 ### [encryption.html](/application/templates/encryption.html)
 
 Used on the [***getting_started.html***](/application/templates/getting_started.html)
-and [***results.html](/application/templates/results.html***) page. Displays a user
+and [***results.html***](/application/templates/results.html) page. Displays a user
 input form with the following options:
 
 - *Add Characters*: The user types in characters to add to the password and chooses the
@@ -407,7 +407,7 @@ capitalise, either from a dropdown list or entered manually.
 (optional: mod variable to check for modifications in the password)
 
 Once the user has submitted the user input form on the [***getting_started.html***](/application/templates/getting_started.html)
-or [***results.html***](/application/templates/results.html) page, [***user_input_data()***](/application/user_inputs.py)
+or [***results.html***](/application/templates/results.html) page, the [***user_input_data()***](/application/user_inputs.py)
 function is called. The user's most recent encryption specification is extracted from
 the user input form and entered (along with other information) into the following variables:
 
@@ -499,5 +499,5 @@ the user.
 
 ## That's It!
 
-Please contact me for any further information :)
-
+Please [contact me](https://www.linkedin.com/in/lucy-nora-ahmed-ba44131b6/) for any
+further information :)
