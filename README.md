@@ -492,3 +492,8 @@ user with the characters specified.
 
 - *Capitalise Function*: Takes the base word and capitalises the characters specified by
 the user.
+
+## That's It!
+
+### Please contact me for any further information :)
+
