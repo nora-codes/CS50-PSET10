@@ -65,16 +65,16 @@ the base word, it can be used as a password. The more the base word is encrypted
 the more difficult it is to hack into. The base word used on this app is the name
 of the website for which the user is creating a password.
 
-   *For example, if the website is facebook, the base word for the password will be facebook.*
+   ***For example, if the website is facebook, the base word for the password will be facebook.***
 
 The user first creates a single encryption method to apply to the base word.
 
-   *For example, if the encryption is:*
+   ***For example, if the encryption is:***
 
-     *"add a '#' to the end of the text"*
+   ***"add a '#' to the end of the text"***
 
-    *The output of the password for facebook would be 'facebook#' or the password*
-    *for instagram would be 'instagram#' and so on...*
+   ***The output of the password for facebook would be 'facebook#' or the password***
+   ***for instagram would be 'instagram#' and so on...***
 
 The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
 website is "example". The user's encryption is initially applied to this default word
