@@ -3,7 +3,7 @@
 ### Description
 
 A website where users can create, modify and strength test a unique and universal
-password encryption key - to use on all of their accounts.
+password encryption key that they can use on all of their online accounts.
 
 Languages used: Python, PostgreSQL, Flask, Jinja, Javascript, HTML, CSS
 
@@ -13,33 +13,33 @@ https://youtu.be/xbEME2TbwcQ
 
 ### Personal Comments
 
-I have been encrypting my passwords using this method for years and during this time, 
-I have been explaining the idea to anyone that would listen. I thought it would be a 
+I have been encrypting my passwords using this method for years and during this time,
+I have been explaining the idea to anyone that would listen. I thought it would be a
 useful tool to create for my final project and help others in using my password method.
 
-I started very small and wrote a program that worked on the command line. I then scaled 
-it to work as a web page, spent some time on the UX/UI and added a database to allow 
+I started very small and wrote a program that worked on the command line. I then scaled
+it to work as a web page, spent some time on the UX/UI and added a database to allow
 for multiple encryption methods.
 
-I then used [Heroku](https://www.heroku.com) to get it online for others to access. I 
-chose this platform after some research as it promised to get the app up and running 
-very quicky. In hindsight, I regret this decision because for the time it took me to 
-learn how to get the app working on Heroku, I could have invested that time learning 
-how to deploy the app online myself.
+I then used [Heroku](https://www.heroku.com) to get it online for others to access. I
+chose this platform after some research as it promised to get the app up and running
+very quicky. In hindsight though, I regret this decision because in the time it
+***actually*** took me to learn how to get the app working on Heroku, I could have
+invested that time learning how to deploy the app online myself.
 
-Since it has been running online, I have expanded the database to allow multiple users 
-to access the website simultaneously. This meant that I could send the it to 
-friends for feedback. They were able to point out improvements in the UI/UX and find 
+Since it has been running online, I have expanded the database to allow multiple users
+to access the website simultaneously. This meant that I could send it to
+friends for feedback. They were able to point out improvements in the UI/UX and find
 bugs that I was unaware of.
 
 After implementing all of the feedback and refining the app further, I decided to
 finish working on the project. I have come so far since the beginning of this
-project and learned so much more than I thought I would, in order to get it to
-work the way that it does. 
+project and learned so much more than I thought I woul - in order to get it to
+work the way that it does.
 
-All this growth however, means that if I were to start the project again, I would 
-definitely write the code in a completely different, much more efficient way. But 
-that's ok. For now, the app is working and available for people to access and 
+All this growth however, means that if I were to start the project again, I would
+definitely write the code in a completely different, much more efficient way. But
+that's ok. For now, the app is working and available for people to access and
 maybe I can come back to it in the future and make it much, much better!
 
 ### References
@@ -52,21 +52,22 @@ alogrithm for Python.
 ## Project Details: TLDR Summary
 
 Details of all the individual files in the app are included in the sections below, but
-if that's too long to read, here is a summary of what the app does:
+if that's too much to read, here is a summary of what the app does:
 
-- The tools on the website allow the user to design an encryption key to use on
+The tools on the website allow the user to design an encryption key to use on
 passwords for all of their online accounts. This means that instead of having to
 remember different passwords for each account, or even use a password manager, all
 the user needs to do is remember one encryption key.
 
-- In order to use encrytion, the user needs text to encrypt in order to create a
-password. So a base word is used to start off the password - as text to encrypt. The
-more this base word is encrypted, the more difficult it is to hack into. The base word
-used on this app is the name of the website for which the user is creating a password.
+In order to use encrytion, the user needs text to encrypt. A 'base word' is used
+as the inital text to be encrypted and once encryption has been used to modify
+the base word, it can be used as a password. The more the base word is encrypted,
+the more difficult it is to hack into. The base word used on this app is the name
+of the website for which the user is creating a password.
 
    *For example, if the website is facebook, the base word for the password will be facebook.*
 
-- The user first creates a single encryption method to apply to the base word.
+The user first creates a single encryption method to apply to the base word.
 
    *For example, if the encryption is:*
 
@@ -75,20 +76,17 @@ used on this app is the name of the website for which the user is creating a pas
     *The output of the password for facebook would be 'facebook#' or the password*
     *for instagram would be 'instagram#' and so on...*
 
-- The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
+The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
 website is "example". The user's encryption is initially applied to this default word
-"example".
-
-- The app then analyses this "example" password output and provides the user with a
+"example". The app then analyses this "example" password output and provides the user with a
 strength score and an approximate hacking speed.
 
-- The user can then add or remove single encryption methods to the overall encryption
-until they are happy with their password score and hacker speed.
+The user can then add or remove single encryption methods to the overall encryption
+until they are happy with their password score and hacker speed. The user can also test their
+encryption with other websites, as this changes the password and concequently, the strength
+of the password.
 
-- The user can also test their encryption with other websites as this changes the password
-and concequently, the strength of the password.
-
-- Once the user is happy with their encryption, they can view an encryption key which
+Once the user is happy with their encryption, they can view an encryption key which
 lists all of their current encryption methods, so they can memorise the key and start
 using it on their actual passwords.
 
