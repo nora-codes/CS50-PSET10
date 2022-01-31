@@ -52,16 +52,16 @@ alogrithm for Python.
 ## Project Details: TLDR Summary
 
 Details of all the individual files in the app are included in the sections below, but
-if that's too much to read, here is a summary of what the app does:
+if that's too much to read, here is a summary of what the app does.
 
-### Introduction:
+### Introduction
 
 The tools on the website allow the user to design an encryption key to use on
 passwords for all of their online accounts. This means that instead of having to
 remember different passwords for each account, or even use a password manager, all
 the user needs to do is remember one encryption key.
 
-### Using a base word:
+### Using a base word
 
 In order to use encrytion, the user needs text to encrypt. A 'base word' is used
 as the inital text to be encrypted and once encryption has been used to modify
@@ -71,40 +71,40 @@ of the website for which the user is creating a password.
 
    > *For example, if the website is facebook, the base word for the password will be facebook.*
 
-### Applying the initial encryption:
+### Applying the initial encryption
 
 The user first creates a single encryption method to apply to the base word.
 
-   > *For example, if the encryption is:* ***"add a '#' to the end of the text"***
+   > *For example, if the encryption is:* ***'add a '#' to the end of the text'***
 
-   > *The output of the password for facebook would be 'facebook#' or the password*
+   > *The output password for facebook would be 'facebook#' or the password*
    > *for instagram would be 'instagram#' and so on...*
 
-### Using the encryption on different websites:
+### Analysing the password strength
 
-The default website is "ww<span>w.</span>example.com" and the corresponding base word for this
-website is "example". The user's encryption is initially applied to this default word
-"example". The app then analyses this "example" password output and provides the user with a
+The default website is 'ww<span>w.</span>example.com' and the corresponding base word for this
+website is 'example'. The user's encryption is initially applied to this default word
+'example'. The app then analyses this 'example' password output and provides the user with a
 strength score and an approximate hacking speed.
 
-### Strengthening and refining the encryption:
+### Strengthening and refining the encryption
 
 The user can then add or remove single encryption methods to the overall encryption
 until they are happy with their password score and hacker speed. The user can also test their
 encryption with other websites, as this changes the password and concequently, the strength
 of the password.
 
-### Remembering the password encryption:
+### Remembering the password encryption
 
-Once the user is happy with their encryption, they can view an encryption key which
-lists all of their current encryption methods, so they can memorise the key and start
-using it on their actual passwords.
+Once the user is happy with their encryption, they can view their 'encryption key'. This key
+lists all of their current encryption methods and they can memorise it to use on their
+actual passwords.
 
 ## Project Details: Setup
 
 ### [Procfile](/Procfile)
 
-Used to declare what command should be executed to start the app on [Heroku](https://www.heroku.com).
+Used to declare what command should be executed to start the app.
 
 ### [requirements.txt](/requirements.txt)
 
@@ -144,13 +144,13 @@ apology message that is specific to the error.
 
 ### [manucrypt.py](/application/manucrypt.py)
 
-The main / root Python file that assigns the three .html pages to their respective app
+This is the main Python file that assigns the three .html pages to their respective app
 functions. Each function gets the required data for the page and renders the html
 templates.
 
 **Introduction Page**:
 
-Introduce the user to the website and the password encryption concept:
+Introduces the user to the website and the password encryption concept:
 
 - Route: "/"
 - Function: [index()](/application/manucrypt.py)
@@ -168,9 +168,9 @@ Guides the user through their first encryption method:
 **Results Page**:
 
 Applies the user's first encryption method to an example website and password and
-presents a password strength analysis. The user can also add or remove other
-encrytion methods to their universal encryption key, test the encryption out on other
-websites and view their encryption key for memorisation.
+presents a password strength analysis. The user can also add further encrytion
+methods to their universal encryption key, or remove them. They can also test the
+encryption out on other websites and view their encryption key for memorisation.
 
 - Route: "/results"
 - Function: [result()](/application/manucrypt.py)
@@ -208,7 +208,7 @@ A table is created for the user to store their session information:
 
 - *ID*: A number between 1 and 20. The program will take the next available number.
 
-- *Session*: A session name is created in the format *"user_session_ID"* and stored as
+- *Session*: A session name is created in the format *'user_session_ID'* and stored as
 a session variable.
 
 - *Time*: A timestamp from when the session was initiated. This is used to reallocate
