@@ -162,7 +162,7 @@ Guides the user through their first encryption method:
 
 - Route: "/getting_started"
 - Function: [getting_started()](/application/manucrypt.py)
-- Calls: [user_session.py](/application/user_session.py)
+- Calls: [user_session()](/application/user_session.py) from [user_session.py](/application/user_session.py)
 - Renders: [getting_started.html](/application/templates/getting_started.html)
 
 **Results Page**:
@@ -174,8 +174,8 @@ encryption out on other websites and view their encryption key for memorisation.
 
 - Route: "/results"
 - Function: [result()](/application/manucrypt.py)
-- Calls: [user_inputs.py](/application/user_inputs.py)
-- Calls: [password_strength.py](/application/password_strength.py)
+- Calls: [***user_input_data()***](/application/user_inputs.py) from [user_inputs.py](/application/user_inputs.py)
+- Calls: [password_strength()](/application/password_strength.py) from [password_strength.py](/application/password_strength.py)
 - Renders: [results.html](/application/templates/results.html)
 
 ## Project Details: Introduction Page
@@ -397,8 +397,12 @@ capitalise, either from a dropdown list or entered manually.
 ### [user_inputs.py](/application/user_inputs.py)
 
 - ***Function:*** [***user_input_data()***](/application/user_inputs.py)
-- ***Calls:*** [***encryption_log.py***](/application/encryption_log.py)
-- ***Calls:*** [***password_encryption.py***](/application/password_encryption.py)
+- ***Calls:*** [***encryption_log()***](/application/encryption_log.py) ***from***
+[***encryption_log.py***](/application/encryption_log.py)
+- ***Calls:*** [***encryption_add()***](/application/password_encryption.py)***,***
+[***encryption_replace()***](/application/password_encryption.py) ***and***
+[***encryption_capitalise()***](/application/password_encryption.py) ***from***
+[***password_encryption.py***](/application/password_encryption.py)
 - ***Returns: The encrypted password, the corresponding website and the encryption key***
 (optional: mod variable to check for modifications in the password)
 
