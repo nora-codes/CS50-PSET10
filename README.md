@@ -495,5 +495,5 @@ the user.
 
 ## That's It!
 
-### Please contact me for any further information :)
+Please contact me for any further information :)
 
